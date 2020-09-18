@@ -1,4 +1,23 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Cloud Platform - Back to Work Package](#cloud-platform---back-to-work-package)
+  - [Requirements](#requirements)
+    - [Development](#development)
+  - [Keycloak container](#keycloak-container)
+    - [Build](#build)
+    - [Run](#run)
+    - [Development](#development-1)
+  - [SAP HANA Container](#sap-hana-container)
+  - [Express Container](#express-container)
+    - [Development](#development-2)
+  - [nginx Angular Container](#nginx-angular-container)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Cloud Platform - Back to Work Package
+
 **Documentation is WORK IN PROGRESS**  
 [SAP Cloud Platform](https://www.sap.com/products/cloud-platform.html) deployable [Keycloak](https://www.keycloak.org/) secured system that deploys multiple microservices that takes advantage of the built in search index, geospatial and text analysis libraries in [SAP HANA](https://www.sap.com/products/hana.html) as well as manage [SAP Cloud Platform Workflows](https://help.sap.com/viewer/product/WORKFLOW_SERVICE/Cloud/en-US) for visitor management
 
