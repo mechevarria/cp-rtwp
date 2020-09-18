@@ -1,0 +1,74 @@
+<div class="card-deck">
+  <div class="card">
+    <div class="card-header"><i class="cib-node-js"></i> Search</div>
+    <div class="card-body">
+      <form (ngSubmit)="load()" #userForm="ngForm">
+        <div class="d-flex flex-wrap">
+          <div class="mr-3 mb-3">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <label class="input-group-text">Result Limit</label>
+              </div>
+              <select class="custom-select" id="limit" name="limit" [(ngModel)]="limit">
+                <option>10</option>
+                <option>20</option>
+                <option>50</option>
+                <option>100</option>
+              </select>
+            </div>
+          </div>
+          <div class="mr-3 mb-3">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <label class="input-group-text">Fuzzy</label>
+              </div>
+              <select class="custom-select" id="fuzzy" name="fuzzy" [(ngModel)]="fuzzy">
+                <option>0.6</option>
+                <option>0.7</option>
+                <option>0.8</option>
+                <option>0.9</option>
+                <option>1.0</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="cil-magnifying-glass"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" placeholder="Search notes" id="filter" name="filter"
+                [(ngModel)]="filter" />
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <table class="table table-responsive-sm table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Country</th>
+            <th>Fatalities</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let event of events">
+            <td>{{ event.eventId }}</td>
+            <td>{{ event.eventDate | date }}</td>
+            <td>{{ event.eventType }}</td>
+            <td>{{ event.countryName }}</td>
+            <td>{{ event.fatalities }}</td>
+            <td><span [innerHTML]="event.notes" class="app-notes"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

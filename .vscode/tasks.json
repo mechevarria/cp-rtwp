@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "postinstall",
+			"path": "express-api/",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"label": "npm: postinstall - express-api",
+			"detail": "tsc && npm run lint"
+		}
+	]
+}

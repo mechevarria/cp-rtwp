@@ -1,0 +1,38 @@
+<div class="card-deck mb-3">
+  <div class="card">
+    <div class="card-header">Check the Microservice REST api</div>
+    <form class="card-text" (ngSubmit)="checkApi()" #userForm="ngForm" autocomplete="off">
+      <div class="card-body">
+        <div class="form-group">
+          <label>Name</label>
+          <input name="name" type="text" class="form-control" [(ngModel)]="name">
+        </div>
+        <div class="form-check">
+          <input name="api" type="radio" class="form-check-input" value="springboot-api/status" [(ngModel)]="api">
+          <label class="form-check-label mt-1"><i class="cib-spring"></i> Spring Boot</label>
+        </div>
+        <div class="form-check">
+          <input name="api" type="radio" class="form-check-input" value="express-api/status" [(ngModel)]="api">
+          <label class="form-check-label mt-1"><i class="cib-node-js"></i> Express</label>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-sm btn-primary mr-1" [disabled]="isBusy">
+          <span class="spinner-border spinner-border-sm" *ngIf="isBusy"></span> Submit
+        </button>
+        <button type="button" class="btn btn-sm btn-danger" (click)="clear()" [disabled]="isBusy">Clear</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card-deck">
+  <div class="card">
+    <div class="card-header">Response</div>
+    <div class="card-body">
+      <div class="card-text">
+        <pre>{{ response | json }}</pre>
+      </div>
+    </div>
+  </div>
+</div>

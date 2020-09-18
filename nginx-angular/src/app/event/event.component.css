@@ -1,0 +1,20 @@
+.app-row {
+  cursor: pointer;
+}
+
+mgl-map {
+  height: 30em;
+  width: 100%;
+}
+
+.marker {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #f86c6b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #C9C9C9;
+  cursor: pointer;
+}

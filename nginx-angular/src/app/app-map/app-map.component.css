@@ -1,0 +1,33 @@
+mgl-map {
+  height: 40em;
+  width: 100%;
+}
+
+.app-row {
+  cursor: pointer;
+}
+
+.marker {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #f86c6b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #C9C9C9;
+  cursor: pointer;
+}
+
+::ng-deep .marker-cluster {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #4f615a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: 2px solid #4dbd74;
+  cursor: pointer;
+}

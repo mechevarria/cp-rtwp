@@ -1,0 +1,23 @@
+_schema-version: "3.3"
+ID: cp-btwp
+version: 0.0.1
+modules:
+- name: hdi-hana-deployer
+  type: com.sap.xs.hdi
+  path: db
+  properties:
+    OPTIMIZE_MEMORY: true
+  requires:
+  - name: btwp-hdi-hana
+  parameters:
+    disk-quota: 1024M
+    memory: 128M
+resources:
+- name: btwp-hdi-hana
+  type: com.sap.xs.hdi-container
+  parameters:
+    config:
+      schema: hana
+    service: hana
+  properties:
+    hdi-container-name: ${service-name}

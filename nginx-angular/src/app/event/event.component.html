@@ -1,0 +1,78 @@
+<div class="card-deck">
+  <div class="card">
+    <div class="card-header"><i class="cib-node-js"></i> Events</div>
+    <div class="card-body">
+      <p class="card-text">
+        Displaying {{ limit * (page - 1)}} to {{ limit * page }} of {{ count }} records
+      </p>
+      <table class="table table-responsive-sm table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Country</th>
+            <th>Fatalities</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let event of events" (click)="viewEvent(template, event)" class="app-row">
+            <td>{{ event.eventId }}</td>
+            <td>{{ event.eventDate | date }}</td>
+            <td>{{ event.eventType }}</td>
+            <td>{{ event.country }}</td>
+            <td>{{ event.fatalities }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex flex-wrap">
+        <div>
+          <pagination [disabled]="isBusy" [itemsPerPage]="limit" [maxSize]="5" [totalItems]="count" [(ngModel)]="page"
+            (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;"></pagination>
+        </div>
+        <div class="form-group ml-auto">
+          <select class="form-control" [(ngModel)]="limit" (change)="limitChanged()" title="Records per page">
+            <option>10</option>
+            <option>50</option>
+            <option>100</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Event Details</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <mgl-map [style]="'mapbox://styles/mapbox/streets-v9'" [zoom]="[11]" [center]="detail.geoLocation.coordinates">
+      <mgl-marker [lngLat]="detail.geoLocation.coordinates">
+        <div class="marker"></div>
+      </mgl-marker>
+    </mgl-map>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><b>ID:</b> {{ detail.eventId }}</li>
+      <li class="list-group-item"><b>Event Type:</b> {{ detail.eventType }}</li>
+      <li class="list-group-item"><b>Event SubType:</b> {{ detail.subEventType }}</li>
+      <li class="list-group-item"><b>Event Date:</b> {{ detail.eventDate | date}}</li>
+      <li class="list-group-item"><b>Year:</b> {{ detail.year }}</li>
+      <li class="list-group-item"><b>Timestamp:</b> {{ detail.timestamp }}</li>
+      <li class="list-group-item"><b>Country:</b> {{ detail.country }}</li>
+      <li class="list-group-item"><b>Actor 1:</b> {{ detail.actor1 }}</li>
+      <li class="list-group-item"><b>Actor 2:</b> {{ detail.actor2 }}</li>
+      <li class="list-group-item"><b>Associated Actor 1:</b> {{ detail.assocActor1 }}</li>
+      <li class="list-group-item"><b>Associated Actor 2:</b> {{ detail.assocActor2 }}</li>
+      <li class="list-group-item"><b>Fatalities:</b> {{ detail.fatalities }}</li>
+      <li class="list-group-item"><b>Notes:</b> {{ detail.notes }}</li>
+      <li class="list-group-item"><b>Location:</b> {{ detail.location }}</li>
+      <li class="list-group-item"><b>Region:</b> {{ detail.region }}</li>
+      <li class="list-group-item"><b>Source:</b> {{ detail.source }}</li>
+      <li class="list-group-item"><b>Longitude:</b> {{ detail.longitude }}</li>
+      <li class="list-group-item"><b>Latitude:</b> {{ detail.latitude }}</li>
+    </ul>
+  </div>
+</ng-template>
