@@ -108,6 +108,7 @@ npm install
 * Start a development server with changes hot deployed
 ```bash
 cd rtw-api
+npm install
 ./local-run.sh
 ```
 
@@ -118,15 +119,19 @@ cd rtw-api
 > Requires the Express container to be deployed
 
 ### Development server with hotswap
-```
+```bash
+cd rtwp-vue
 npm install
+
+./local-setup.sh
+
 npm run serve
 ```
 
 * The server will be running on [http://localhost:4200](http://localhost:4200)
 
 ### Compiles and minifies for production
-```
+```bash
 npm run build
 ```
 
@@ -139,14 +144,14 @@ npm run build
 * Update the `cf-login.sh` script with the values found in the SAP Cloud Foundry Cockpit. Then run the script to login.
 
 ```bash
-cf-login.sh
+./cf-login.sh
 ```
 
 * Push your code directly without the need of a container registry with the following commands (make sure you have done a build ahead of time)
 
 
 ```bash
-cf-rtwp-vue.sh
+./cf-rtwp-vue.sh
 ```
 
 * You will find a url to your deployed application in the SAP Cloud Foundry Cockpit.
@@ -165,3 +170,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 * [vue-mobile-detection](https://github.com/ajerez/vue-mobile-detection) for checking mobile state
 * [axios](https://github.com/axios/axios) as http client
 * [jsonplaceholder](https://jsonplaceholder.typicode.com/) for sample table data
+* [vue-keycloak-js](https://github.com/dsb-norge/vue-keycloak-js) for SSO integration

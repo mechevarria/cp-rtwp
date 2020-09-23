@@ -3,6 +3,10 @@ dist
 node_modules
 mtad.yaml
 
+# vue
+rtwp-vue/public/js/env.js
+rtwp-vue/vue.config.js
+
 # docker cp for development only. Do not commit
 keycloak/themes/base
 keycloak/themes/keycloak
