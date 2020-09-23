@@ -1,0 +1,7 @@
+node_modules
+screenshots
+*.code-workspace
+src
+*.config.js
+package*.json
+public

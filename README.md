@@ -12,7 +12,12 @@
   - [SAP HANA Container](#sap-hana-container)
   - [Express Container](#express-container)
     - [Development](#development-2)
-  - [nginx Angular Container](#nginx-angular-container)
+  - [Vue.js Container](#vuejs-container)
+    - [Development server with hotswap](#development-server-with-hotswap)
+    - [Compiles and minifies for production](#compiles-and-minifies-for-production)
+    - [Deploy to SAP Cloud Platform](#deploy-to-sap-cloud-platform)
+    - [Customize configuration](#customize-configuration)
+    - [Integration and Links](#integration-and-links)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -32,7 +37,7 @@
 ```bash
 export CP_USER=i999111
 export CP_PASSWORD=MyAccountPassword55
-export PG_ADDR=cp-btwp.random-string-text.us-east-1.rds.amazonaws.com
+export PG_ADDR=cp-rtwp.random-string-text.us-east-1.rds.amazonaws.com
 export PG_PASSWORD=WholeBunchOfCharacters
 export KEYCLOAK=false
 ```
@@ -95,21 +100,68 @@ cd keycloak
 > Requires the SAP HANA database container to be deployed. Local development requires the SAP HANA host to whitelist external addresses
 
 ### Development
-* Inside the `btwp-api` run the following to install all dependencies
+* Inside the `rtwp-api` run the following to install all dependencies
 ```bash
 npm install
 ```
 
 * Start a development server with changes hot deployed
 ```bash
-cd btw-api
+cd rtw-api
 ./local-run.sh
 ```
 
 * Deployed with `cf-express-api.sh`
 * Change the `KEYCLOAK` environment variable to **true** to enable sso integration
 
-## nginx Angular Container
+## Vue.js Container
 > Requires the Express container to be deployed
-* Deployed with `cf-nginx-angular.sh`
-* Change the `KEYCLOAK` environment variable to **true** to enable sso integration
+
+### Development server with hotswap
+```
+npm install
+npm run serve
+```
+
+* The server will be running on [http://localhost:4200](http://localhost:4200)
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Deploy to SAP Cloud Platform
+
+>You can create an account for free at [SAP Cloud Platform](https://www.sap.com/products/cloud-platform.html)
+
+* Make sure you have the [Cloud Foundry Command Line Interface (cf CLI)](https://docs.cloudfoundry.org/cf-cli/) installed
+
+* Update the `cf-login.sh` script with the values found in the SAP Cloud Foundry Cockpit. Then run the script to login.
+
+```bash
+cf-login.sh
+```
+
+* Push your code directly without the need of a container registry with the following commands (make sure you have done a build ahead of time)
+
+
+```bash
+cf-rtwp-vue.sh
+```
+
+* You will find a url to your deployed application in the SAP Cloud Foundry Cockpit.
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Integration and Links
+
+* [Vue cli](https://cli.vuejs.org/) used to generate this project
+* [Style Guide](https://vuejs.org/v2/style-guide/) for Vue. Attempting to follow as best as possible
+* [CoreUI Bootstrap](https://coreui.io) theme
+* [Bootstrap-Vue](https://bootstrap-vue.org/) components
+* [Vue Router](https://router.vuejs.org/) for view management
+* [Vuex](https://vuex.vuejs.org/) for state management
+* [vue-mobile-detection](https://github.com/ajerez/vue-mobile-detection) for checking mobile state
+* [axios](https://github.com/axios/axios) as http client
+* [jsonplaceholder](https://jsonplaceholder.typicode.com/) for sample table data
