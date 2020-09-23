@@ -8,6 +8,13 @@ module.exports = {
                 pathRewrite: {
                     '^/jsonplaceholder': ''
                 }
+            },
+            '/btwp-api': {
+                target: 'http://jsonplaceholder.typicode.com',
+                secure: false,
+                pathRewrite: {
+                    '^/btwp-api': '${EXPRESS_URL}'
+                }
             }
         }
     },
