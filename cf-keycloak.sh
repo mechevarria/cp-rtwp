@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-app=btwp-keycloak
+app=rtwp-keycloak
 
 cf push $app \
     -m 1G \

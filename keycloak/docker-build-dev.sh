@@ -2,4 +2,4 @@
 
 docker build \
   -f Dockerfile.dev \
-  -t quay.io/mechevarria/btwp-keycloak .
+  -t quay.io/mechevarria/rtwp-keycloak .

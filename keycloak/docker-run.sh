@@ -8,4 +8,4 @@ docker run \
     -e DB_DATABASE=postgres \
     -e DB_PASSWORD=$PG_PASSWORD \
     -e DB_ADDR=$PG_ADDR \
-    quay.io/mechevarria/btwp-keycloak
+    quay.io/mechevarria/rtwp-keycloak

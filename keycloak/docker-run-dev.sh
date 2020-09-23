@@ -9,4 +9,4 @@ docker run \
     -e DB_PASSWORD=$PG_PASSWORD \
     -e DB_ADDR=$PG_ADDR \
     --mount type=bind,source=${PWD}/themes,target=/opt/jboss/keycloak/themes \
-    quay.io/mechevarria/btwp-keycloak
+    quay.io/mechevarria/rtwp-keycloak
