@@ -13,7 +13,7 @@ if [[ $status = "FAILED" ]]; then
   exit 1
 else
   export EXPRESS_URL=https://$(cf app rtwp-api | awk '{print $2}' | sed -n 5p)/
-  echo express_url=$EXPRESS_URL
+  echo $EXPRESS_URL
 fi
 
 envsubst < public/js/env.template.js > public/js/env.js

@@ -22,6 +22,11 @@
     </div>
     <ul class="c-sidebar-nav" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
       <li class="c-sidebar-nav-item">
+        <router-link class="c-sidebar-nav-link" to="/status" @click.native="closeOnMobile">
+          <i class="c-sidebar-nav-icon cil-speedometer"></i> Status
+        </router-link>
+      </li>
+      <li class="c-sidebar-nav-item">
         <router-link class="c-sidebar-nav-link" to="/form" @click.native="closeOnMobile">
           <i class="c-sidebar-nav-icon cil-notes"></i> Form
         </router-link>

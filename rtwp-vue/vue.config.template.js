@@ -10,10 +10,10 @@ module.exports = {
                 }
             },
             '/btwp-api': {
-                target: 'http://jsonplaceholder.typicode.com',
+                target: '${EXPRESS_URL}',
                 secure: false,
                 pathRewrite: {
-                    '^/btwp-api': '${EXPRESS_URL}'
+                    '^/btwp-api': ''
                 }
             }
         }
