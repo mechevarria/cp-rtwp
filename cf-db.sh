@@ -11,7 +11,7 @@ cp mta.yaml mtad.yaml
 
 cf deploy ./ -f
 
-cf create-service-key btwp-hdi-hana btwp-hdi-hana-key
+cf create-service-key rtwp-hdi-hana rtwp-hdi-hana-key
 
 rm mtad.yaml
-rm cp-btwp.mtar
+rm cp-rtwp.mtar

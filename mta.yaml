@@ -1,5 +1,5 @@
 _schema-version: "3.3"
-ID: cp-btwp
+ID: cp-rtwp
 version: 0.0.1
 modules:
 - name: hdi-hana-deployer
@@ -8,12 +8,12 @@ modules:
   properties:
     OPTIMIZE_MEMORY: true
   requires:
-  - name: btwp-hdi-hana
+  - name: rtwp-hdi-hana
   parameters:
     disk-quota: 1024M
     memory: 128M
 resources:
-- name: btwp-hdi-hana
+- name: rtwp-hdi-hana
   type: com.sap.xs.hdi-container
   parameters:
     config:
