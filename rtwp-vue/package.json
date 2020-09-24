@@ -1,6 +1,6 @@
 {
   "name": "rtwp-vue",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "author": "Mike Echevarria <mike.echevarria@gmail.com>",
   "license": "MIT",
   "repository": {
@@ -24,10 +24,12 @@
     "axios": "^0.20.0",
     "bootstrap-vue": "^2.16.0",
     "core-js": "^3.6.5",
+    "leaflet": "^1.7.1",
     "perfect-scrollbar": "^1.5.0",
     "vue": "^2.6.12",
     "vue-mobile-detection": "^1.0.0",
     "vue-router": "^3.4.3",
+    "vue2-leaflet": "^2.5.2",
     "vuex": "^3.5.1"
   },
   "devDependencies": {
@@ -61,7 +63,8 @@
   "prettier": {
     "singleQuote": true,
     "semi": false,
-    "trailingComma": "none"
+    "trailingComma": "none",
+    "printWidth": 100
   },
   "browserslist": [
     "> 1%",

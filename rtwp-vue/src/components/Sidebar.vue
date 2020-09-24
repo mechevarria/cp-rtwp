@@ -37,6 +37,11 @@
         </router-link>
       </li>
       <li class="c-sidebar-nav-item">
+        <router-link class="c-sidebar-nav-link" to="/about" @click.native="closeOnMobile">
+          <i class="c-sidebar-nav-icon cil-code"></i> About
+        </router-link>
+      </li>
+      <li class="c-sidebar-nav-item">
         <a class="c-sidebar-nav-link" href="https://github.com/openNS2" target="_blank">
           <i class="c-sidebar-nav-icon cib-github"></i> Github
         </a>

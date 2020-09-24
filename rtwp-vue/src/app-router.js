@@ -4,6 +4,7 @@ import AppHome from './components/Home.vue'
 import AppForm from './components/Form.vue'
 import AppHana from './components/Hana.vue'
 import AppStatus from './components/Status.vue'
+import AppAbout from './components/About.vue'
 
 Vue.use(VueRouter)
 
@@ -19,6 +20,10 @@ const routes = [{
     path: '/hana',
     component: AppHana,
     name: 'Hana'
+}, {
+    path: '/about',
+    component: AppAbout,
+    name: 'About'
 }, {
     path: '/status',
     component: AppStatus,

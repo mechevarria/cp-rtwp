@@ -3,43 +3,26 @@
     <div class="card-deck">
       <div class="card">
         <div class="card-body">
+          <a target="_blank" href="https://sapns2.com/labs/" title="NS2 Labs">
+            <img
+              src="../assets/ns2-labs-horizontal.png"
+              height="50"
+              alt="NS2 Labs logo"
+              class="mb-2"
+            />
+          </a>
           <h4 class="card-title">Welcome {{ fullName }}</h4>
-          <p class="card-text">This application was created using the following</p>
-          <ul class="list-group">
-            <li class="list-group-item">
-              <a target="_blank" href="https://vuejs.org/" title="Vue.js framework">
-                <img src="../assets/vue.svg" height="50" alt="Vue.js" /> Vue.js
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a target="_blank" href="https://bootstrap-vue.org/" title="Bootstrap-Vue plugins">
-                <img src="../assets/bootstrap-vue.png" height="55" alt="Bootstrap-Vue" /> Bootstrap Vue
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a target="_blank" href="https://coreui.io/docs/getting-started/introduction" title="CoreUI theme">
-                <img src="../assets/coreui.png" height="65" alt="core-ui" /> CoreUI theme
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">Runtime frameworks</h4>
-          <p class="card-text">This application source is deployable on</p>
-          <ul class="list-group">
-            <li class="list-group-item">
-              <a target="_blank" href="https://cloudplatform.sap.com" title="SAP Cloud Platform">
-                <img src="../assets/sap.png" height="45" alt="SAP Cloud Platform" /> SAP Cloud Platform
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a target="_blank" href="https://nodejs.org" title="nodejs development application">
-                <img src="../assets/nodejs.svg" height="55" alt="nodejs" class="ml-2 mr-2" /> nodejs dev application
-              </a>
-            </li>
-          </ul>
+          <div class="card-text">
+            <l-map
+              class="app-map"
+              v-if="showMap"
+              :zoom="zoom"
+              :center="center"
+              :options="mapOptions"
+            >
+              <l-tile-layer :url="url" :attribution="attribution" />
+            </l-map>
+          </div>
         </div>
       </div>
     </div>
@@ -48,12 +31,36 @@
 </template>
 
 <script>
+import { latLng } from 'leaflet'
+import { LMap, LTileLayer } from 'vue2-leaflet'
+
 export default {
   name: 'AppHome',
+  components: {
+    LMap,
+    LTileLayer
+  },
   computed: {
-    fullName: function() {
-      return (this.$keycloak ? this.$keycloak.fullName : 'Guest');
+    fullName: function () {
+      return this.$keycloak ? this.$keycloak.fullName : 'Guest'
+    }
+  },
+  data() {
+    return {
+      zoom: 20,
+      center: latLng(38.880371, -77.461093),
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      mapOptions: {
+        zoomSnap: 0.5
+      },
+      showMap: true
     }
   }
 }
 </script>
+<style scoped>
+.app-map {
+  height: 500px;
+}
+</style>

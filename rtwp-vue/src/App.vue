@@ -42,4 +42,5 @@ export default {
 @import '~@coreui/coreui/dist/css/coreui.min.css';
 @import '~@coreui/icons/css/all.min.css';
 @import '~bootstrap-vue/dist/bootstrap-vue.css';
+@import '~leaflet/dist/leaflet.css';
 </style>
