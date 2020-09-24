@@ -26,7 +26,7 @@ cf push $app \
 
 cf se $app NPM_CONFIG_PRODUCTION false
 cf se $app KEYCLOAK_URL $keycloak_url
-cf se $app KEYCLOAK false
+cf se $app KEYCLOAK true
 
 # bind hana service
 cf bind-service $app $service
