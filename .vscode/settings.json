@@ -1,5 +1,6 @@
 {
     "eslint.workingDirectories": [
-        "./btwp-api"
+        "./rtwp-api",
+        "./rtwp-vue"
     ]
 }
