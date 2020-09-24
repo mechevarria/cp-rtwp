@@ -169,5 +169,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 * [Vuex](https://vuex.vuejs.org/) for state management
 * [vue-mobile-detection](https://github.com/ajerez/vue-mobile-detection) for checking mobile state
 * [axios](https://github.com/axios/axios) as http client
-* [jsonplaceholder](https://jsonplaceholder.typicode.com/) for sample table data
 * [vue-keycloak-js](https://github.com/dsb-norge/vue-keycloak-js) for SSO integration
