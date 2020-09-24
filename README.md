@@ -39,7 +39,6 @@ export CP_USER=i999111
 export CP_PASSWORD=MyAccountPassword55
 export PG_ADDR=cp-rtwp.random-string-text.us-east-1.rds.amazonaws.com
 export PG_PASSWORD=WholeBunchOfCharacters
-export KEYCLOAK=false
 ```
 
 ![architecture](screenshots/architecture.png)
@@ -170,3 +169,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 * [vue-mobile-detection](https://github.com/ajerez/vue-mobile-detection) for checking mobile state
 * [axios](https://github.com/axios/axios) as http client
 * [vue-keycloak-js](https://github.com/dsb-norge/vue-keycloak-js) for SSO integration
+* [Vue2Leaflet](https://github.com/vue-leaflet/Vue2Leaflet) map integration
