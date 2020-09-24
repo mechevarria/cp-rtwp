@@ -11,9 +11,5 @@ search='${KEYCLOAK}'
 replace=$KEYCLOAK
 sed -i s@$search@$replace@g ./dist/js/env.js
 
-search='http://express'
-replace=$EXPRESS_URL
-sed -i s@$search@$replace@g ./nginx.conf
-
 echo "Running buildpack command"
 varify -buildpack-yml-path ./buildpack.yml ./nginx.conf $HOME/modules $DEP_DIR/nginx/modules && nginx -p $PWD -c ./nginx.conf
