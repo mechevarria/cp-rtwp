@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import AppHome from './components/Home.vue'
 import AppForm from './components/Form.vue'
-import AppTable from './components/Table.vue'
+import AppHana from './components/Hana.vue'
 import AppStatus from './components/Status.vue'
 
 Vue.use(VueRouter)
@@ -16,9 +16,9 @@ const routes = [{
     component: AppForm,
     name: 'Form'
 }, {
-    path: '/table',
-    component: AppTable,
-    name: 'Table'
+    path: '/hana',
+    component: AppHana,
+    name: 'Hana'
 }, {
     path: '/status',
     component: AppStatus,

@@ -8,7 +8,10 @@
     >
       <i class="c-icon c-icon-lg cil-menu"></i>
     </button>
-    <router-link class="c-header-brand d-lg-none c-header-brand-sm-up-center" to="/">
+    <router-link
+      class="c-header-brand d-lg-none c-header-brand-sm-up-center"
+      to="/"
+    >
       <img src="../assets/NS2-logo-blue.svg" alt="NS2 logo" width="86" />
     </router-link>
 
@@ -36,10 +39,17 @@
         <template v-slot:button-content>
           <a role="button">
             <i class="c-icon cil-bell"></i>
-            <span class="badge badge-pill badge-info" v-if="messages.length > 0">{{messages.length}}</span>
+            <span
+              class="badge badge-pill badge-info"
+              v-if="messages.length > 0"
+              >{{ messages.length }}</span
+            >
           </a>
         </template>
-        <b-dropdown-header class="bg-light text-center app-pointer" @click="clear">
+        <b-dropdown-header
+          class="bg-light text-center app-pointer"
+          @click="clear"
+        >
           <strong class="app-underline">Clear Events</strong>
         </b-dropdown-header>
         <b-dropdown-item v-for="(msg, key) in messages" :key="key">
@@ -62,12 +72,12 @@
           </a>
         </template>
         <b-dropdown-header class="bg-light text-center">
-          <strong>Guest</strong>
+          <strong>{{ userName }}</strong>
         </b-dropdown-header>
-        <b-dropdown-item>
+        <b-dropdown-item @click="doAccount">
           <i class="mr-1 c-icon cil-shield-alt"></i> Account
         </b-dropdown-item>
-        <b-dropdown-item>
+        <b-dropdown-item @click="doLogout">
           <i class="mr-1 c-icon cil-account-logout"></i> Logout
         </b-dropdown-item>
       </b-nav-item-dropdown>
@@ -86,10 +96,25 @@ export default {
   components: {
     AppBreadcrumbs
   },
-  computed: mapState(['messages']),
+  computed: {
+    ...mapState(['messages']),
+    userName: function () {
+      return this.$keycloak ? this.$keycloak.userName : 'Guest'
+    }
+  },
   methods: {
     toggleSidebar() {
       this.$store.commit('toggleSidebarShown')
+    },
+    doAccount() {
+      if (this.$keycloak) {
+        this.$keycloak.accountManagement()
+      }
+    },
+    doLogout() {
+      if (this.$keycloak) {
+        this.$keycloak.logoutFn()
+      }
     },
     clear() {
       this.$store.commit('clearMessages')

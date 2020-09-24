@@ -16,8 +16,8 @@
             :disabled="isBusy"
           >
             <i class="cil-check-circle btn-icon mr-1" v-if="!isBusy"></i>
-            <i class="spinner-border spinner-border-sm mr-1" v-if="isBusy"></i
-            >Submit
+            <i class="spinner-border spinner-border-sm mr-1" v-if="isBusy"></i>
+            Submit
           </button>
           <button
             type="button"

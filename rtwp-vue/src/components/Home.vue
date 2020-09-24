@@ -50,9 +50,9 @@
 <script>
 export default {
   name: 'AppHome',
-  data() {
-    return {
-      fullName: 'Guest'
+  computed: {
+    fullName: function() {
+      return (this.$keycloak ? this.$keycloak.fullName : 'Guest');
     }
   }
 }

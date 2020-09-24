@@ -27,17 +27,17 @@
         </router-link>
       </li>
       <li class="c-sidebar-nav-item">
+        <router-link class="c-sidebar-nav-link" to="/hana" @click.native="closeOnMobile">
+          <i class="c-sidebar-nav-icon cil-storage"></i> Hana
+        </router-link>
+      </li>
+      <li class="c-sidebar-nav-item">
         <router-link class="c-sidebar-nav-link" to="/form" @click.native="closeOnMobile">
           <i class="c-sidebar-nav-icon cil-notes"></i> Form
         </router-link>
       </li>
       <li class="c-sidebar-nav-item">
-        <router-link class="c-sidebar-nav-link" to="/table" @click.native="closeOnMobile">
-          <i class="c-sidebar-nav-icon cil-list"></i> Table
-        </router-link>
-      </li>
-      <li class="c-sidebar-nav-item">
-        <a class="c-sidebar-nav-link" href="https://github.com/mechevarria" target="_blank">
+        <a class="c-sidebar-nav-link" href="https://github.com/openNS2" target="_blank">
           <i class="c-sidebar-nav-icon cib-github"></i> Github
         </a>
       </li>

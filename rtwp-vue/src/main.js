@@ -33,9 +33,9 @@ if (window._env.keycloak.enabled === 'true') {
 
   Vue.use(VueKeyCloak, {
     config: {
-      realm: window._env.keycloak.realm,
+      realm: 'rtwp',
       url: window._env.keycloak.url,
-      clientId: window._env.keycloak.id
+      clientId: 'vue'
     },
     init: {
       onLoad: 'login-required',
