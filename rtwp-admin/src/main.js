@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
-import { NavPlugin, DropdownPlugin, ToastPlugin, TablePlugin, PaginationPlugin, FormSelectPlugin } from 'bootstrap-vue'
+import { NavPlugin, DropdownPlugin, ToastPlugin, TablePlugin, PaginationPlugin, FormSelectPlugin, CalendarPlugin } from 'bootstrap-vue'
 import VueMobileDetection from 'vue-mobile-detection'
 import VueKeyCloak from '@dsb-norge/vue-keycloak-js'
 import 'perfect-scrollbar/dist/perfect-scrollbar'
 import axios from 'axios'
 import '@popperjs/core/dist/esm/popper'
+import 'highcharts/highcharts'
 import router from './app-router'
 import store from './app-store'
 
@@ -17,6 +18,7 @@ Vue.use(ToastPlugin)
 Vue.use(TablePlugin)
 Vue.use(PaginationPlugin)
 Vue.use(FormSelectPlugin)
+Vue.use(CalendarPlugin)
 Vue.use(VueMobileDetection)
 
 function tokenInterceptor() {
@@ -50,7 +52,7 @@ if (window._env.keycloak.enabled === 'true') {
       }).$mount('#app')
     }
   })
-  
+
 } else {
 
   new Vue({

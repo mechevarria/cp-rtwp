@@ -20,6 +20,16 @@
                 <img src="../assets/coreui.png" height="65" alt="core-ui" /> CoreUI theme
               </a>
             </li>
+            <li class="list-group-item">
+              <a target="_blank" href="https://vue2-leaflet.netlify.app/" title="Vue Leaflet">
+                <img src="../assets/vue-leaflet.png" height="50" alt="vue-leaflet" class="mr-1" /> Vue Leaflet
+              </a>
+            </li>
+            <li class="list-group-item">
+              <a target="_blank" href="https://github.com/highcharts/highcharts-vue" title="Highcharts">
+                <img src="../assets/highcharts.png" height="60" alt="highcharts-vue" class="mr-2" /> Highcharts-vue
+              </a>
+            </li>
           </ul>
         </div>
       </div>

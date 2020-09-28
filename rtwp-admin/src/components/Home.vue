@@ -54,7 +54,13 @@
       </div>
       <div class="card">
         <div class="card-header">Statistics <i class="float-right cil-chart-pie"></i></div>
-        <div class="card-body">Charts go here</div>
+        <div class="card-body">
+          <ul class="list-inline">
+            <li>
+              <highcharts :options="chartOptions"></highcharts>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     <div class="card-deck mt-2">
@@ -71,11 +77,11 @@
       </div>
       <div class="card">
         <div class="card-header">Schedule of Events <i class="float-right cil-calendar"></i></div>
-        <div class="card-body">
-          Calendar goes here
-        </div>
+        <div class="card-body text-center">
+          <b-calendar locale="en-US"></b-calendar>
         </div>
       </div>
+    </div>
     <router-view></router-view>
   </span>
 </template>
@@ -83,12 +89,14 @@
 <script>
 import { latLng } from 'leaflet'
 import { LMap, LTileLayer } from 'vue2-leaflet'
+import { Chart } from 'highcharts-vue'
 
 export default {
   name: 'AppHome',
   components: {
     LMap,
-    LTileLayer
+    LTileLayer,
+    highcharts: Chart
   },
   computed: {
     fullName: function () {
@@ -104,7 +112,30 @@ export default {
       mapOptions: {
         zoomSnap: 0.5
       },
-      showMap: true
+      showMap: true,
+      chartOptions: {
+        chart: {
+          type: 'pie',
+          height: '200px'
+        },
+        title: {
+          text: 'Visitor Metrics'
+        },
+        series: [
+          {
+            data: [
+              {
+                y: 60,
+                name: 'Scheduled'
+              },
+              {
+                y: 40,
+                name: 'Ad-hoc'
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }
