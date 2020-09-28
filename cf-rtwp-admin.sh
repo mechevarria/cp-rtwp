@@ -16,7 +16,7 @@ else
   echo express_url=$express_url
 fi
 
-app=rtwp-vue
+app=rtwp-admin
 
 cd $app
 
