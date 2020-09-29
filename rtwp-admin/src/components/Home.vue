@@ -15,7 +15,7 @@
           <h3 class="card-title">Welcome {{ fullName }}</h3>
           <hr />
           <h4>Lab News</h4>
-          <ul class="text-justify">
+          <ul class="text-left">
             <li>No scheduled fire alarm testing</li>
             <li>Temperature sensor installation was completed this week</li>
             <li>
