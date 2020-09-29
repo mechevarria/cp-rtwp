@@ -13,21 +13,23 @@
             />
           </a>
           <h3 class="card-title">Welcome {{ fullName }}</h3>
+          <hr />
+          <h4>Lab News</h4>
+          <ul class="text-justify">
+            <li>No scheduled fire alarm testing</li>
+            <li>Temperature sensor installation was completed this week</li>
+            <li>
+              Labs will be closed on 10/02/2020 for
+              <a href="https://sapns2.com/ns2now/" target="_blank">NS2 Now</a> filming
+            </li>
+          </ul>
         </div>
       </div>
       <div class="card">
-        <div class="card-header">Usage Map <i class="float-right cil-map"></i></div>
+        <div class="card-header">Visitor Concentration Map <i class="float-right cil-map"></i></div>
         <div class="card-body">
-          <div class="card-text">
-            <l-map
-              class="app-map"
-              v-if="showMap"
-              :zoom="zoom"
-              :center="center"
-              :options="mapOptions"
-            >
-              <l-tile-layer :url="url" :attribution="attribution" />
-            </l-map>
+          <div class="card-text text-center">
+            <img src="../assets/floor-map.png" alt="floor-map" width="50%" />
           </div>
         </div>
       </div>
@@ -43,16 +45,6 @@
     </div>
     <div class="card-deck mt-2">
       <div class="card">
-        <div class="card-header">Lab News <i class="float-right cil-newspaper"></i></div>
-        <div class="card-body">
-          <ul>
-            <li>No scheduled fire alarm testing</li>
-            <li>Temperature sensor installation was completed this week</li>
-            <li>Labs will be closed on 10/02/2020 for NS2 Now filming</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card">
         <div class="card-header">Statistics <i class="float-right cil-chart-pie"></i></div>
         <div class="card-body">
           <ul class="list-inline">
@@ -62,8 +54,12 @@
           </ul>
         </div>
       </div>
-    </div>
-    <div class="card-deck mt-2">
+      <div class="card">
+        <div class="card-header">Schedule of Events <i class="float-right cil-calendar"></i></div>
+        <div class="card-body text-center">
+          <b-calendar locale="en-US"></b-calendar>
+        </div>
+      </div>
       <div class="card">
         <div class="card-header">Todays Visitors <i class="float-right cil-people"></i></div>
         <div class="card-body">
@@ -75,27 +71,17 @@
           </ul>
         </div>
       </div>
-      <div class="card">
-        <div class="card-header">Schedule of Events <i class="float-right cil-calendar"></i></div>
-        <div class="card-body text-center">
-          <b-calendar locale="en-US"></b-calendar>
-        </div>
-      </div>
     </div>
     <router-view></router-view>
   </span>
 </template>
 
 <script>
-import { latLng } from 'leaflet'
-import { LMap, LTileLayer } from 'vue2-leaflet'
 import { Chart } from 'highcharts-vue'
 
 export default {
   name: 'AppHome',
   components: {
-    LMap,
-    LTileLayer,
     highcharts: Chart
   },
   computed: {
@@ -105,14 +91,6 @@ export default {
   },
   data() {
     return {
-      zoom: 20,
-      center: latLng(38.880251, -77.461093),
-      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      mapOptions: {
-        zoomSnap: 0.5
-      },
-      showMap: true,
       chartOptions: {
         chart: {
           type: 'pie',
@@ -126,11 +104,13 @@ export default {
             data: [
               {
                 y: 60,
-                name: 'Scheduled'
+                name: 'Scheduled',
+                color: '#321fdb'
               },
               {
                 y: 40,
-                name: 'Ad-hoc'
+                name: 'Ad-hoc',
+                color: '#3399ff'
               }
             ]
           }
