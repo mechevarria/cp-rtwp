@@ -1,0 +1,10 @@
+entity BADGE_LOCATION {
+    key ID : Integer generated always as identity (start with 1 increment by 1);
+    LOC: String(100);
+    PROB: String(100);
+    SEEN: String(100);
+    FLOOR: Integer;
+    DEVICE_ID: String(100);
+    GEO_LOC: hana.ST_POINT;
+    SEEN_TS: UTCTimestamp;
+};
