@@ -9,7 +9,7 @@ module.exports = (req, res) => {
         loc,
         geo_loc
     ORDER BY count(*) DESC
-    LIMIT 30`;
+    LIMIT 50`;
 
     try {
         const results = req.db.exec(sql);
