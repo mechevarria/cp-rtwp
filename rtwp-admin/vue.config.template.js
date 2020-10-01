@@ -2,11 +2,11 @@ module.exports = {
     devServer: {
         port: 4200,
         proxy: {
-            '/btwp-api': {
+            '/rtwp-api': {
                 target: '${EXPRESS_URL}',
                 secure: false,
                 pathRewrite: {
-                    '^/btwp-api': ''
+                    '^/rtwp-api': ''
                 }
             }
         }
