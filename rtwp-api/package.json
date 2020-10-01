@@ -1,6 +1,6 @@
 {
   "name": "rtwp-api",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "RESTful Express API for SAP Cloud Platform and HANA",
   "author": "Mike Echevarria <mike.echevarria@gmail.com>",
   "repository": "https://github.com/openNS2/cp-rtwp.git",
