@@ -4,6 +4,10 @@
     <div class="card-body">
       <div class="card-text">
         <i class="spinner-border text-primary" v-if="isBusy"></i>
+        <p class="text-muted" v-if="showMap">
+          {{ stats.count }} reports between {{ stats.min.substring(0, 19) }} and
+          {{ stats.max.substring(0, 19) }}
+        </p>
         <l-map class="app-map" v-if="showMap" :zoom="zoom" :center="center">
           <l-tile-layer :url="url" :attribution="attribution" :options="tileOptions" />
           <l-image-overlay :url="floorMapUrl" :bounds="bounds"></l-image-overlay>
@@ -16,7 +20,7 @@
             :fill-color="getColor(index)"
             :fill-opacity="0.5"
           >
-            <l-popup>{{item.locCount}} reports at this location</l-popup>
+            <l-popup>{{ item.locCount }} reports at this location</l-popup>
           </l-circle-marker>
         </l-map>
       </div>
@@ -62,7 +66,8 @@ export default {
         [38.88024, -77.461105]
       ],
       floorMapUrl: 'labs-map.png',
-      total: 0
+      total: 0,
+      stats: null
     }
   },
   methods: {
@@ -77,23 +82,25 @@ export default {
     },
     getData() {
       this.isBusy = true
-      const url = '/rtwp-api/hana/'
       axios
-        .get(url)
-        .then((res) => {
-          this.data = res.data.results
-          this.data.forEach((item) => {
-            item.latLng = item.geoLoc.coordinates.reverse()
-            this.total += item.locCount
+        .all([axios.get('/rtwp-api/hana'), axios.get('/rtwp-api/count')])
+        .then(
+          axios.spread((res1, res2) => {
+            this.data = res1.data.results
+            this.stats = res2.data.results[0]
+            this.data.forEach((item) => {
+              item.latLng = item.geoLoc.coordinates.reverse()
+              this.total += item.locCount
+            })
           })
-          this.showMap = true
-        })
+        )
         .catch((err) => {
           console.error(err)
           this.errorMsg(err.message)
         })
         .finally(() => {
           this.isBusy = false
+          this.showMap = true
         })
     }
   },
