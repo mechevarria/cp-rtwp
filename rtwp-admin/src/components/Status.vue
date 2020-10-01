@@ -62,12 +62,12 @@ export default {
           text: this.text
         }
       }
-      const url = '/btwp-api/status'
+      const url = '/rtwp-api/status'
       axios
         .get(url, options)
         .then((res) => {
           this.data = res.data
-          this.successMsg('Successfully checked btwp-api')
+          this.successMsg('Successfully checked rtwp-api')
         })
         .catch((err) => {
           console.error(err)

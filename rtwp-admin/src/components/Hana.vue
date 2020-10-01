@@ -1,22 +1,24 @@
 <template>
-  <div class="card-deck mb-3">
-    <div class="card">
-      <div class="card-header">Top 10 Badge Locations</div>
-      <div class="card-body">
-        <div class="card-text">
-          <i class="spinner-border text-primary" v-if="isBusy"></i>
-          <l-map class="app-map" v-if="showMap" :zoom="zoom" :center="center">
-            <l-tile-layer :url="url" :attribution="attribution" :options="tileOptions" />
-            <l-image-overlay :url="floorMapUrl" :bounds="bounds"></l-image-overlay>
-            <l-circle-marker v-for="(latLng, index) in latLngs" :key="index"
-              :lat-lng="latLng"
-              :radius="circle.radius"
-              :color="circle.color"
-              :fill-color="circle.fillColor"
-            />
-          </l-map>
-          <b-table striped :items="data" responsive bordered ref="table" class="mt-2"></b-table>
-        </div>
+  <div class="card">
+    <div class="card-header">{{ data.length }} Most Reported Badge Locations</div>
+    <div class="card-body">
+      <div class="card-text">
+        <i class="spinner-border text-primary" v-if="isBusy"></i>
+        <l-map class="app-map" v-if="showMap" :zoom="zoom" :center="center">
+          <l-tile-layer :url="url" :attribution="attribution" :options="tileOptions" />
+          <l-image-overlay :url="floorMapUrl" :bounds="bounds"></l-image-overlay>
+          <l-circle-marker
+            v-for="(item, index) in data"
+            :key="index"
+            :lat-lng="item.latLng"
+            :radius="radius * (item.locCount / total)"
+            :color="getColor(index)"
+            :fill-color="getColor(index)"
+            :fill-opacity="0.5"
+          >
+            <l-popup>{{item.locCount}} reports at this location</l-popup>
+          </l-circle-marker>
+        </l-map>
       </div>
     </div>
   </div>
@@ -24,7 +26,7 @@
 
 <script>
 import { latLng } from 'leaflet'
-import { LMap, LTileLayer, LCircleMarker, LImageOverlay } from 'vue2-leaflet'
+import { LMap, LTileLayer, LCircleMarker, LImageOverlay, LPopup } from 'vue2-leaflet'
 import axios from 'axios'
 import msgMixin from '../mixins/msg-mixin'
 
@@ -34,34 +36,45 @@ export default {
     LMap,
     LTileLayer,
     LCircleMarker,
-    LImageOverlay
+    LImageOverlay,
+    LPopup
   },
   mixins: [msgMixin],
   data() {
     return {
       data: [],
-      latLngs: [],
       isBusy: false,
       showMap: false,
-      circle: {
-        radius: 6,
-        color: 'yellow',
-        fillColor: 'red'
-      },
-      zoom: 19,
-      center: latLng(38.880251, -77.461093),
+      radius: 50,
+      red: '#e55353',
+      yellow: '#f9b115',
+      blue: '#3399ff',
+      zoom: 20,
+      center: latLng(38.880481, -77.461193),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       tileOptions: {
         maxZoom: 22,
-        maxNativeZoom:19
+        maxNativeZoom: 19
       },
+      bounds: [
+        [38.88058, -77.46141],
+        [38.88024, -77.461105]
+      ],
       floorMapUrl: 'labs-map.png',
-      bounds: [[38.880489357825475, -77.46145803208859], [38.880330280370940, -77.46106185592427]],
+      total: 0
     }
   },
   methods: {
-    // https://github.com/publiclab/Leaflet.DistortableImage
+    getColor(index) {
+      if (index < 0.33 * this.data.length) {
+        return this.red
+      } else if (index < 0.66 * this.data.length) {
+        return this.yellow
+      } else {
+        return this.blue
+      }
+    },
     getData() {
       this.isBusy = true
       const url = '/rtwp-api/hana/'
@@ -70,7 +83,8 @@ export default {
         .then((res) => {
           this.data = res.data.results
           this.data.forEach((item) => {
-            this.latLngs.push(item.geoLoc.coordinates.reverse())
+            item.latLng = item.geoLoc.coordinates.reverse()
+            this.total += item.locCount
           })
           this.showMap = true
         })
@@ -90,6 +104,6 @@ export default {
 </script>
 <style scoped>
 .app-map {
-  height: 500px;
+  height: 600px;
 }
 </style>
