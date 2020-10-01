@@ -1,5 +1,5 @@
 module.exports = (req, res) => {
-    const sql = 'SELECT count(*) as "count" FROM badge_location';
+    const sql = 'SELECT count(*) as "count", MIN(SEEN_TS) as "min", MAX(SEEN_TS) as "max" FROM badge_location';
 
     try {
         const results = req.db.exec(sql);
