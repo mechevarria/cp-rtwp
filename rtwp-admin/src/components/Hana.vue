@@ -50,7 +50,7 @@ export default {
       yellow: '#f9b115',
       blue: '#3399ff',
       zoom: 20,
-      center: latLng(38.880481, -77.461193),
+      center: latLng(38.880411, -77.461193),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       tileOptions: {
@@ -104,6 +104,6 @@ export default {
 </script>
 <style scoped>
 .app-map {
-  height: 600px;
+  height: 400px;
 }
 </style>
