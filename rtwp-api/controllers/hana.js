@@ -1,5 +1,15 @@
 module.exports = (req, res) => {
-    const sql = 'select schema_name, table_name, table_oid from tables';
+    const sql = `
+    SELECT 
+        loc as "loc",
+        count(*) AS "locCount",
+        geo_loc.ST_AsGeoJSON() as "geoLoc"
+    FROM badge_location
+    GROUP BY 
+        loc,
+        geo_loc
+    ORDER BY count(*) DESC
+    LIMIT 10`;
 
     try {
         const data = req.db.exec(sql);
