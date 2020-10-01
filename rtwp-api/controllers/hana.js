@@ -12,9 +12,15 @@ module.exports = (req, res) => {
     LIMIT 10`;
 
     try {
-        const data = req.db.exec(sql);
+        const results = req.db.exec(sql);
+
+        results.forEach((result) => {
+            // eslint-disable-next-line no-param-reassign
+            result.geoLoc = JSON.parse(result.geoLoc);
+        });
+
         res.status(200).json({
-            data
+            results
         });
     } catch (err) {
         console.error(err);
