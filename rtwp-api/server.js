@@ -24,9 +24,11 @@ app.use(keycloakAuth);
 const router = express.Router();
 const statusCtrl = require('./controllers/status');
 const hanaCtrl = require('./controllers/hana');
+const countCtrl = require('./controllers/hana-count');
 
 router.route('/status').get(statusCtrl);
 router.route('/hana').get(hanaCtrl);
+router.route('/count').get(countCtrl);
 
 app.use('/', router);
 
