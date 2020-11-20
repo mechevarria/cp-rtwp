@@ -1,0 +1,11 @@
+{
+    "name": "keycloak-coreui-ns2",
+    "version": "0.1.0",
+    "dependencies": {
+        "@coreui/coreui": "^3.3.0",
+        "node-sass": "^5.0.0"
+    },
+    "scripts": {
+        "start": "npx node-sass --output-style compressed ns2-theme.scss themes/coreui/login/resources/css/ns2-coreui.min.css"
+    }
+}
