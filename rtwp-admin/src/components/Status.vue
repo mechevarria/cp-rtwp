@@ -10,21 +10,12 @@
           </div>
         </div>
         <div class="card-footer">
-          <button
-            type="submit"
-            class="btn btn-sm btn-primary mr-1"
-            :disabled="isBusy"
-          >
+          <button type="submit" class="btn btn-sm btn-primary mr-1" :disabled="isBusy">
             <i class="cil-check-circle btn-icon mr-1" v-if="!isBusy"></i>
             <i class="spinner-border spinner-border-sm mr-1" v-if="isBusy"></i>
             Submit
           </button>
-          <button
-            type="button"
-            class="btn btn-sm btn-danger"
-            @click="clear"
-            :disabled="isBusy"
-          >
+          <button type="button" class="btn btn-sm btn-danger" @click="clear" :disabled="isBusy">
             <i class="cil-x-circle btn-icon mr-1"></i>Clear
           </button>
         </div>
@@ -65,11 +56,11 @@ export default {
       const url = '/rtwp-api/status'
       axios
         .get(url, options)
-        .then((res) => {
+        .then(res => {
           this.data = res.data
           this.successMsg('Successfully checked rtwp-api')
         })
-        .catch((err) => {
+        .catch(err => {
           console.error(err)
           this.errorMsg(err.message)
         })
