@@ -22,22 +22,22 @@
     </div>
     <ul class="c-sidebar-nav" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
       <li class="c-sidebar-nav-item">
-        <router-link class="c-sidebar-nav-link" to="/status" @click.native="closeOnMobile">
+        <router-link class="c-sidebar-nav-link" to="/home/status" @click.native="closeOnMobile">
           <i class="c-sidebar-nav-icon cil-speedometer"></i> Status
         </router-link>
       </li>
       <li class="c-sidebar-nav-item">
-        <router-link class="c-sidebar-nav-link" to="/hana" @click.native="closeOnMobile">
-          <i class="c-sidebar-nav-icon cil-storage"></i> Hana
+        <router-link class="c-sidebar-nav-link" to="/home/map" @click.native="closeOnMobile">
+          <i class="c-sidebar-nav-icon cil-map"></i> Labs Map
         </router-link>
       </li>
       <li class="c-sidebar-nav-item">
-        <router-link class="c-sidebar-nav-link" to="/Visitors" @click.native="closeOnMobile">
+        <router-link class="c-sidebar-nav-link" to="/home/visitors" @click.native="closeOnMobile">
           <i class="c-sidebar-nav-icon cil-people"></i> Visitors
         </router-link>
       </li>
       <li class="c-sidebar-nav-item">
-        <router-link class="c-sidebar-nav-link" to="/about" @click.native="closeOnMobile">
+        <router-link class="c-sidebar-nav-link" to="/home/about" @click.native="closeOnMobile">
           <i class="c-sidebar-nav-icon cil-code"></i> About
         </router-link>
       </li>
