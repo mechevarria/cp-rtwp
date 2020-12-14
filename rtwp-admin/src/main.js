@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import { NavPlugin, DropdownPlugin, ToastPlugin, TablePlugin, PaginationPlugin, FormSelectPlugin, CalendarPlugin } from 'bootstrap-vue'
+import { NavPlugin, DropdownPlugin, ToastPlugin, TablePlugin, PaginationPlugin, FormSelectPlugin, CalendarPlugin, FormDatepickerPlugin } from 'bootstrap-vue'
 import VueMobileDetection from 'vue-mobile-detection'
 import VueKeyCloak from '@dsb-norge/vue-keycloak-js'
 import 'perfect-scrollbar/dist/perfect-scrollbar'
@@ -19,6 +19,7 @@ Vue.use(TablePlugin)
 Vue.use(PaginationPlugin)
 Vue.use(FormSelectPlugin)
 Vue.use(CalendarPlugin)
+Vue.use(FormDatepickerPlugin)
 Vue.use(VueMobileDetection)
 
 function tokenInterceptor() {
