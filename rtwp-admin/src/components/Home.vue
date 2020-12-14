@@ -47,7 +47,7 @@
       </div>
     </div>
     <div class="card-deck mt-4">
-      <app-hana></app-hana>
+      <app-map v-bind:show-form=false></app-map>
     </div>
     <div class="card-deck mt-4">
       <div class="card">
@@ -76,13 +76,13 @@
 
 <script>
 import { Chart } from 'highcharts-vue'
-import AppHana from './Hana.vue'
+import AppMap from './Map.vue'
 
 export default {
   name: 'AppHome',
   components: {
     highcharts: Chart,
-    AppHana
+    AppMap
   },
   computed: {
     fullName: function () {
