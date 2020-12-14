@@ -2,35 +2,35 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import AppHome from './components/Home.vue'
 import AppVisitors from './components/Visitors.vue'
-import AppHana from './components/Hana.vue'
+import AppHana from './components/Map.vue'
 import AppStatus from './components/Status.vue'
 import AppAbout from './components/About.vue'
 
 Vue.use(VueRouter)
 
 const routes = [{
-    path: '/',
+    path: '/home',
     component: AppHome,
     name: 'Home'
 }, {
-    path: '/visitors',
+    path: '/home/visitors',
     component: AppVisitors,
     name: 'Visitors'
 }, {
-    path: '/hana',
+    path: '/home/map',
     component: AppHana,
-    name: 'Hana'
+    name: 'Map'
 }, {
-    path: '/about',
+    path: '/home/about',
     component: AppAbout,
     name: 'About'
 }, {
-    path: '/status',
+    path: '/home/status',
     component: AppStatus,
     name: 'Status'
 }, {
     path: '*',
-    redirect: '/'
+    redirect: '/home'
 }]
 
 const router = new VueRouter({
