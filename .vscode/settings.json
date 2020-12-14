@@ -1,6 +1,6 @@
 {
     "eslint.workingDirectories": [
         "./rtwp-api",
-        "./rtwp-vue"
+        "./rtwp-admin"
     ]
 }

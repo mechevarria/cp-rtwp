@@ -7,14 +7,14 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Debug btwp-api",
+            "name": "Debug rtwp-api",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/btwp-api/server.js",
-            "preLaunchTask": "npm: postinstall - btwp-api",
+            "program": "${workspaceFolder}/rtwp-api/server.js",
+            "preLaunchTask": "npm: postinstall - rtwp-api",
             "outFiles": [
-                "${workspaceFolder}/btwp-api/**/*.js"
+                "${workspaceFolder}/rtwp-api/**/*.js"
             ]
         }
     ]
