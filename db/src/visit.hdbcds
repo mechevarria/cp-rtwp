@@ -1,0 +1,21 @@
+entity VISIT {
+    key ID : Integer generated always as identity (start with 1 increment by 1);
+    VISITOR_NAME: String(200);
+    VISIT_ID: Integer;
+    EMAIL: String(200);
+    MOBILE: String(100);
+    MOBILE_COUNTRY: String(10);
+    FIRST_NAME: String(100);
+    LAST_NAME: String(100);
+    VISITOR_TYPE: Integer;
+    IMAGE_URL: String(1000);
+    COMPANY_NAME: String(200);
+    ADDRESS: String(200);
+    STATUS: Integer;
+    DEVICE_ID: String(100);
+    READABLE_DEVICE_ID: String(100);
+    UUID: String(100);
+    START_TS: UTCTimestamp;
+    LAST_TS: UTCTimestamp;
+    LAST_MODIFICATION_TS: UTCTimestamp;
+};
