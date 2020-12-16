@@ -5,29 +5,33 @@ import AppVisitors from './components/Visitors.vue'
 import AppHana from './components/Map.vue'
 import AppStatus from './components/Status.vue'
 import AppAbout from './components/About.vue'
+import AppDetail from './components/Detail.vue'
 
 Vue.use(VueRouter)
 
 const routes = [{
     path: '/home',
     component: AppHome,
-    name: 'Home'
+    name: 'home'
 }, {
     path: '/home/visitors',
     component: AppVisitors,
-    name: 'Visitors'
+    name: 'visitors'
+}, {
+    path: '/home/visitors/:id',
+    component: AppDetail
 }, {
     path: '/home/map',
     component: AppHana,
-    name: 'Map'
+    name: 'map'
 }, {
     path: '/home/about',
     component: AppAbout,
-    name: 'About'
+    name: 'about'
 }, {
     path: '/home/status',
     component: AppStatus,
-    name: 'Status'
+    name: 'status'
 }, {
     path: '*',
     redirect: '/home'
