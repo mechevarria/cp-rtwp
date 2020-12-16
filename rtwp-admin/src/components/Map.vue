@@ -136,12 +136,12 @@ export default {
         }
       }
       axios
-        .all([axios.get('/rtwp-api/hana', options), axios.get('/rtwp-api/count', options)])
+        .all([axios.get('/rtwp-api/map', options), axios.get('/rtwp-api/count', options)])
         .then(
           axios.spread((res1, res2) => {
-            if (res1.data.results.length > 0 && res2.data.results[0].count > 0) {
+            if (res1.data.results.length > 0 && res2.data.result.count > 0) {
               this.data = res1.data.results
-              this.stats = res2.data.results[0]
+              this.stats = res2.data.result
               this.data.forEach(item => {
                 item.latLng = item.geoLoc.coordinates.reverse()
                 this.total += item.locCount
