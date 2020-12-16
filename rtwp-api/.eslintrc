@@ -7,7 +7,7 @@
         "airbnb-base"
     ],
     "rules": {
-        "indent": ["error", 4],
+        "indent": ["error", 2],
         "comma-dangle": ["error", "never"],
         "no-console": ["error", {"allow": ["info", "warn", "error"]}],
         "max-len": ["warn", 180]
