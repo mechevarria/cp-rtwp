@@ -23,16 +23,20 @@ app.use(keycloakAuth);
 
 const router = express.Router();
 const statusCtrl = require('./controllers/status');
-const hanaCtrl = require('./controllers/hana');
-const countCtrl = require('./controllers/hana-count');
+const mapCtrl = require('./controllers/map');
+const countCtrl = require('./controllers/map-count');
+const visitorAllCtrl = require('./controllers/visitor-all');
+const visitorCtrl = require('./controllers/visitor');
 
 router.route('/status').get(statusCtrl);
-router.route('/hana').get(hanaCtrl);
+router.route('/map').get(mapCtrl);
 router.route('/count').get(countCtrl);
+router.route('/visitors').get(visitorAllCtrl);
+router.route('/visitor').get(visitorCtrl);
 
 app.use('/', router);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.info(`http server started on port ${port}`);
+  console.info(`http server started on port ${port}`);
 });
