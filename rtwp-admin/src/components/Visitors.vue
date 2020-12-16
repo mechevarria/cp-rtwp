@@ -1,45 +1,40 @@
 <template>
   <div class="card-deck">
     <div class="card">
-      <div class="card-header">Message Test</div>
-      <form class="card-text" @submit.prevent="handleSubmit">
-        <div class="card-body">
-          <div class="form-group">
-            <label>Message</label>
-            <input v-model="text" type="text" class="form-control" />
-          </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" value="success" v-model="type" />
-            <label class="form-check-label mt-1">Success</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" value="info" v-model="type" />
-            <label class="form-check-label mt-1">Info</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" value="warning" v-model="type" />
-            <label class="form-check-label mt-1">Warning</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" value="error" v-model="type" />
-            <label class="form-check-label mt-1">Error</label>
-          </div>
+      <div class="card-header">
+        <i class="spinner-border spinner-border-sm mr-1" v-if="isBusy"></i> Visitors
+      </div>
+      <div class="card-body">
+        <b-table
+          striped
+          responsive
+          bordered
+          :items="getItems"
+          :disabled="isBusy"
+          :current-page="currentPage"
+          :per-page="perPage"
+          :sort-by.sync="sortBy"
+          :sort-desc.sync="sortDesc"
+          :fields="fields"
+          @row-clicked="onRowClick"
+          :tbody-tr-class="'app-pointer'"
+        >
+        </b-table>
+        <div class="d-flex">
+          <b-pagination
+            v-model="currentPage"
+            :total-rows="totalRows"
+            :per-page="perPage"
+            :disabled="isBusy"
+          ></b-pagination>
         </div>
-        <div class="card-footer">
-          <button type="submit" class="btn btn-sm btn-primary mr-1" :disabled="isBusy">
-            <i class="cil-check-circle btn-icon mr-1" v-if="!isBusy"></i>
-            <i class="spinner-border spinner-border-sm mr-1" v-if="isBusy"></i>Submit
-          </button>
-          <button type="button" class="btn btn-sm btn-danger" @click="clear" :disabled="isBusy">
-            <i class="cil-x-circle btn-icon mr-1"></i>Clear
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import msgMixin from '../mixins/msg-mixin'
 
 export default {
@@ -47,31 +42,54 @@ export default {
   mixins: [msgMixin],
   data() {
     return {
-      text: 'Test message',
-      type: 'success',
-      isBusy: false
+      totalRows: 0,
+      perPage: 10,
+      currentPage: 1,
+      start: 0,
+      isBusy: false,
+      sortBy: 'last',
+      sortDesc: true,
+      fields: [
+        { key: 'id', sortable: false },
+        { key: 'visitorName', sortable: true },
+        { key: 'mobile', sortable: false },
+        { key: 'start', sortable: true, label: 'Visit Start' },
+        { key: 'last', sortable: true, label: 'Visit End' }
+      ]
     }
   },
   methods: {
-    handleSubmit() {
+    onRowClick(row) {
+      this.$router.push({path: `/home/visitors/${row.id}`})
+    },
+    getItems(ctx, callback) {
       this.isBusy = true
-      setTimeout(() => {
-        switch (this.type) {
-          case 'info':
-            this.infoMsg(this.text)
-            break
-          case 'success':
-            this.successMsg(this.text)
-            break
-          case 'warning':
-            this.warningMsg(this.text)
-            break
-          case 'error':
-            this.errorMsg(this.text)
-            break
+      const direction = ctx.sortDesc ? 'DESC' : 'ASC'
+
+      const url = '/rtwp-api/visitors'
+      const options = {
+        params: {
+          order: ctx.sortBy,
+          limit: ctx.perPage,
+          offset: ctx.currentPage - 1,
+          direction
         }
-        this.isBusy = false
-      }, 500)
+      }
+      axios
+        .get(url, options)
+        .then(res => {
+          const items = res.data.results
+          this.totalRows = res.data.count
+          callback(items)
+        })
+        .catch(err => {
+          console.error(err)
+          this.errorMsg(err.message)
+          callback([])
+        })
+        .finally(() => {
+          this.isBusy = false
+        })
     },
     clear() {
       this.text = null
@@ -79,3 +97,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.app-pointer {
+  cursor: pointer;
+}
+</style>
