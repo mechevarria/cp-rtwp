@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 status=$(cf app rtwp-keycloak | sed -n 3p)
-if [[ $status = "FAILED" ]] && [[ $KEYCLOAK = "true" ]]; then
+if [[ $status = "FAILED" ]]; then
   exit 1
 else
+  export KEYCLOAK=true
   export KEYCLOAK_URL=https://$(cf app rtwp-keycloak | awk '{print $2}' | sed -n 5p)/auth
   echo KEYCLOAK_URL=$KEYCLOAK_URL
 fi

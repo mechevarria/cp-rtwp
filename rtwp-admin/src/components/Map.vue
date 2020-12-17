@@ -2,6 +2,7 @@
   <div class="card">
     <div class="card-header">
       <i class="spinner-border spinner-border-sm mr-1" v-if="isBusy"></i> Labs Map
+       <i class="float-right cil-map"></i>
     </div>
     <div class="card-body">
       <div class="card-text">

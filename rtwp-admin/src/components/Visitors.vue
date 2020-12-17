@@ -3,6 +3,7 @@
     <div class="card">
       <div class="card-header">
         <i class="spinner-border spinner-border-sm mr-1" v-if="isBusy"></i> Visitors
+        <i class="float-right cil-people"></i>
       </div>
       <div class="card-body">
         <b-table
@@ -36,10 +37,11 @@
 <script>
 import axios from 'axios'
 import msgMixin from '../mixins/msg-mixin'
+import formatMixin from '../mixins/format-mixin'
 
 export default {
   name: 'AppVisitors',
-  mixins: [msgMixin],
+  mixins: [msgMixin, formatMixin],
   data() {
     return {
       totalRows: 0,
@@ -60,7 +62,7 @@ export default {
   },
   methods: {
     onRowClick(row) {
-      this.$router.push({path: `/home/visitors/${row.id}`})
+      this.$router.push({ path: `/home/visitors/${row.id}` })
     },
     getItems(ctx, callback) {
       this.isBusy = true
@@ -78,7 +80,12 @@ export default {
       axios
         .get(url, options)
         .then(res => {
-          const items = res.data.results
+          const items = res.data.results.map(item => {
+            item.start = this.formatDate(item.start, 'lll')
+            item.last = this.formatDate(item.last, 'lll')
+            item.mobile = this.formatPhone(item.mobile)
+            return item
+          })
           this.totalRows = res.data.count
           callback(items)
         })

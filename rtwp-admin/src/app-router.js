@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import AppHome from './components/Home.vue'
 import AppVisitors from './components/Visitors.vue'
 import AppHana from './components/Map.vue'
-import AppStatus from './components/Status.vue'
 import AppAbout from './components/About.vue'
 import AppDetail from './components/Detail.vue'
 
@@ -28,10 +27,6 @@ const routes = [{
     path: '/home/about',
     component: AppAbout,
     name: 'about'
-}, {
-    path: '/home/status',
-    component: AppStatus,
-    name: 'status'
 }, {
     path: '*',
     redirect: '/home'

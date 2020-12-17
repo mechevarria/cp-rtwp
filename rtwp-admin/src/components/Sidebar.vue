@@ -32,11 +32,6 @@
         </router-link>
       </li>
       <li class="c-sidebar-nav-item">
-        <router-link class="c-sidebar-nav-link" to="/home/status" @click.native="closeOnMobile">
-          <i class="c-sidebar-nav-icon cil-speedometer"></i> Status
-        </router-link>
-      </li>
-      <li class="c-sidebar-nav-item">
         <router-link class="c-sidebar-nav-link" to="/home/about" @click.native="closeOnMobile">
           <i class="c-sidebar-nav-icon cil-code"></i> About
         </router-link>

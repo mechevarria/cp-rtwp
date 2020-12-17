@@ -15,16 +15,7 @@
           <h3 class="card-title">Welcome {{ fullName }}</h3>
         </div>
       </div>
-      <div class="card">
-        <div class="card-header">Statistics <i class="float-right cil-chart-pie"></i></div>
-        <div class="card-body">
-          <ul class="list-inline">
-            <li>
-              <highcharts :options="chartOptions"></highcharts>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <app-card-stats></app-card-stats>
       <div class="card border-success">
         <div class="card-header">
           COVID Risk Status <i class="float-right cil-medical-cross"></i>
@@ -34,17 +25,7 @@
           <h3>100% low-risk responses / No - high-temp warnings</h3>
         </div>
       </div>
-      <div class="card">
-        <div class="card-header">Todays Visitors <i class="float-right cil-people"></i></div>
-        <div class="card-body">
-          <ul class="list-group">
-            <li class="list-group-item"><a href>Kyle Rice</a></li>
-            <li class="list-group-item"><a href>Jay Bougie</a></li>
-            <li class="list-group-item"><a href>Michael Towles</a></li>
-            <li class="list-group-item"><a href>Tunisha Holloway</a></li>
-          </ul>
-        </div>
-      </div>
+      <app-card-visitors></app-card-visitors>
     </div>
     <div class="card-deck mt-4">
       <app-map v-bind:show-form=false></app-map>
@@ -75,14 +56,16 @@
 </template>
 
 <script>
-import { Chart } from 'highcharts-vue'
 import AppMap from './Map.vue'
+import AppCardStats from './CardStats'
+import AppCardVisitors from './CardVisitors'
 
 export default {
   name: 'AppHome',
   components: {
-    highcharts: Chart,
-    AppMap
+    AppMap,
+    AppCardStats,
+    AppCardVisitors
   },
   computed: {
     fullName: function () {
@@ -90,33 +73,7 @@ export default {
     }
   },
   data() {
-    return {
-      chartOptions: {
-        chart: {
-          type: 'pie',
-          height: '200px'
-        },
-        title: {
-          text: 'Visitor Metrics'
-        },
-        series: [
-          {
-            data: [
-              {
-                y: 60,
-                name: 'Scheduled',
-                color: '#321fdb'
-              },
-              {
-                y: 40,
-                name: 'Ad-hoc',
-                color: '#3399ff'
-              }
-            ]
-          }
-        ]
-      }
-    }
+    return {}
   }
 }
 </script>
