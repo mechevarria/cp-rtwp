@@ -137,7 +137,7 @@ export default {
         }
       }
       axios
-        .all([axios.get('/rtwp-api/map', options), axios.get('/rtwp-api/count', options)])
+        .all([axios.get('/rtwp-api/map', options), axios.get('/rtwp-api/map/count', options)])
         .then(
           axios.spread((res1, res2) => {
             if (res1.data.results.length > 0 && res2.data.result.count > 0) {
