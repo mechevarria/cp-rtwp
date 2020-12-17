@@ -22,17 +22,17 @@ const keycloakAuth = require('./middlewares/keycloak-auth')(app);
 app.use(keycloakAuth);
 
 const router = express.Router();
-const statusCtrl = require('./controllers/status');
 const mapCtrl = require('./controllers/map');
 const countCtrl = require('./controllers/map-count');
 const visitorAllCtrl = require('./controllers/visitor-all');
 const visitorCtrl = require('./controllers/visitor');
+const statsCtrl = require('./controllers/stats-visit');
 
-router.route('/status').get(statusCtrl);
 router.route('/map').get(mapCtrl);
 router.route('/count').get(countCtrl);
 router.route('/visitors').get(visitorAllCtrl);
 router.route('/visitor').get(visitorCtrl);
+router.route('/stats').get(statsCtrl);
 
 app.use('/', router);
 
