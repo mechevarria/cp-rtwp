@@ -224,16 +224,21 @@ export default {
           this.isBusy = false
         })
     },
-    recurseLoc(locations) {
-      if (locations.length === 0) {
+    recurseLoc() {
+      if (this.locations.length === 0) {
         return
       } else {
-        this.latLngs.push(locations[0].latLng)
-        this.currentLoc = locations[0].latLng
-        this.currentTime = locations[0].seen
-        locations.shift()
+        // don't push repeat values
+        if (
+          !(this.latLngs.length > 1 && this.latLngs.slice(-1)[0].equals(this.locations[0].latLng))
+        ) {
+          this.latLngs.push(this.locations[0].latLng)
+          this.currentLoc = this.locations[0].latLng
+          this.currentTime = this.formatDate(this.locations[0].seen, 'YYYY-MM-DD HH:mm:ss')
+        }
+        this.locations.shift()
         setTimeout(() => {
-          this.recurseLoc(locations)
+          this.recurseLoc(this.locations)
         }, 2)
       }
     },
@@ -254,7 +259,7 @@ export default {
           if (res.data.results.length === 0) {
             this.infoMsg('No location data found for this visit')
           }
-          if(res.data.results.length === 10000) {
+          if (res.data.results.length === 10000) {
             this.infoMsg('Record limit of 10000 reached')
           }
           this.locations = res.data.results.map(result => {
@@ -262,7 +267,7 @@ export default {
             result.latLng = latLng(split[1], split[0])
             return result
           })
-          this.recurseLoc(this.locations)
+          this.recurseLoc()
         })
         .catch(err => {
           console.error(err)
