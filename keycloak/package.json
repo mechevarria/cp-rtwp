@@ -2,7 +2,7 @@
     "name": "keycloak-coreui-ns2",
     "version": "0.1.0",
     "dependencies": {
-        "@coreui/coreui": "^3.3.0",
+        "@coreui/coreui": "^3.4.0",
         "node-sass": "^5.0.0"
     },
     "scripts": {
