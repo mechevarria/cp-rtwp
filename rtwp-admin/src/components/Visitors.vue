@@ -27,6 +27,9 @@
             :total-rows="totalRows"
             :per-page="perPage"
             :disabled="isBusy"
+            :hide-goto-end-buttons="true"
+            prev-text="Prev"
+            next-text="Next"
           ></b-pagination>
         </div>
       </div>
