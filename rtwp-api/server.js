@@ -21,22 +21,9 @@ const keycloakAuth = require('./middlewares/keycloak-auth')(app);
 
 app.use(keycloakAuth);
 
-const router = express.Router();
-const mapCtrl = require('./controllers/map');
-const mapCountCtrl = require('./controllers/map-count');
-const visitorAllCtrl = require('./controllers/visitor-all');
-const visitorCtrl = require('./controllers/visitor');
-const statsCtrl = require('./controllers/stats-visit');
-const visitorMapCtrl = require('./controllers/visitor-map');
+const appRouter = require('./app-router');
 
-router.route('/map').get(mapCtrl);
-router.route('/map/count').get(mapCountCtrl);
-router.route('/visitors').get(visitorAllCtrl);
-router.route('/visitor').get(visitorCtrl);
-router.route('/stats').get(statsCtrl);
-router.route('/visitor/map').get(visitorMapCtrl);
-
-app.use('/', router);
+app.use('/', appRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
