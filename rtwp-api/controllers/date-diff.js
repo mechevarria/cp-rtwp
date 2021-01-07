@@ -3,7 +3,7 @@ module.exports = (req, res) => {
     SELECT
         ID as "id",
         VISITOR_NAME as "visitorName",
-        days_between(START_TS, LAST_TS) AS "dateDiff"
+        days_between(START_TS, LAST_TS) AS "numDays"
     FROM
         VISIT
     WHERE
