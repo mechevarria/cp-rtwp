@@ -10,6 +10,7 @@
           striped
           responsive
           bordered
+          hover
           :items="getItems"
           :disabled="isBusy"
           :current-page="currentPage"

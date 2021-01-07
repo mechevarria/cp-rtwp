@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import { NavPlugin, DropdownPlugin, ToastPlugin, TablePlugin, PaginationPlugin, FormSelectPlugin, CalendarPlugin, FormDatepickerPlugin } from 'bootstrap-vue'
+import { NavPlugin, DropdownPlugin, ToastPlugin, TablePlugin, PaginationPlugin, FormSelectPlugin, CalendarPlugin, FormDatepickerPlugin, ImagePlugin } from 'bootstrap-vue'
 import VueMobileDetection from 'vue-mobile-detection'
 import VueKeyCloak from '@dsb-norge/vue-keycloak-js'
 import 'perfect-scrollbar/dist/perfect-scrollbar'
@@ -21,6 +21,7 @@ Vue.use(FormSelectPlugin)
 Vue.use(CalendarPlugin)
 Vue.use(FormDatepickerPlugin)
 Vue.use(VueMobileDetection)
+Vue.use(ImagePlugin)
 
 function tokenInterceptor() {
   axios.interceptors.request.use(config => {

@@ -2,47 +2,51 @@
   <div class="card">
     <div class="card-header">
       <i class="spinner-border spinner-border-sm mr-1" v-if="isBusy"></i> Labs Map
-       <i class="float-right cil-map"></i>
+      <i class="float-right cil-map"></i>
     </div>
     <div class="card-body">
-      <div class="card-text">
-        <form v-if="showForm">
-          <div class="row">
-            <div class="form-group col-sm-6">
-              <label>Start Date</label>
-              <b-form-datepicker id="start-datepicker" v-model="start"></b-form-datepicker>
-            </div>
-            <div class="form-group col-sm-6">
-              <label>End Date</label>
-              <b-form-datepicker id="end-datepicker" v-model="end"></b-form-datepicker>
-            </div>
-          </div>
+      <div class="d-flex justify-content-between mb-2" v-if="showForm">
+        <div>
+          <form class="form-inline">
+            <b-form-datepicker
+              id="start-datepicker"
+              label-no-date-selected="Select Start Date"
+              v-model="start"
+              class="mr-2"
+            ></b-form-datepicker>
+            <b-form-datepicker
+              id="end-datepicker"
+              label-no-date-selected="Select End Date"
+              v-model="end"
+            ></b-form-datepicker>
+          </form>
+        </div>
+        <div>
           <button
             type="button"
             class="btn btn-sm btn-primary mb-2"
             @click="getData()"
             :disabled="isBusy"
           >
-            <i class="cil-reload btn-icon mr-1"></i>Refresh
+            <i class="cil-reload btn-icon"></i>
           </button>
-        </form>
-
-        <l-map class="app-map" v-if="showMap" :zoom="zoom" :center="center" :options="mapOptions">
-          <l-tile-layer :url="url" :attribution="attribution" :options="tileOptions" />
-          <l-image-overlay :url="floorMapUrl" :bounds="bounds"></l-image-overlay>
-          <l-circle-marker
-            v-for="(item, index) in data"
-            :key="index"
-            :lat-lng="item.latLng"
-            :radius="radius * (item.locCount / total)"
-            :color="getColor(index)"
-            :fill-color="getColor(index)"
-            :fill-opacity="0.5"
-          >
-            <l-popup>{{ item.locCount }} reports at this location</l-popup>
-          </l-circle-marker>
-        </l-map>
+        </div>
       </div>
+      <l-map class="app-map" v-if="showMap" :zoom="zoom" :center="center" :options="mapOptions">
+        <l-tile-layer :url="url" :attribution="attribution" :options="tileOptions" />
+        <l-image-overlay :url="floorMapUrl" :bounds="bounds"></l-image-overlay>
+        <l-circle-marker
+          v-for="(item, index) in data"
+          :key="index"
+          :lat-lng="item.latLng"
+          :radius="radius * (item.locCount / total)"
+          :color="getColor(index)"
+          :fill-color="getColor(index)"
+          :fill-opacity="0.5"
+        >
+          <l-popup>{{ item.locCount }} reports at this location</l-popup>
+        </l-circle-marker>
+      </l-map>
     </div>
     <div class="card-footer">
       {{ data.length }} Most Reported Badge Locations
@@ -74,7 +78,7 @@ export default {
     showForm: {
       type: Boolean,
       default: true
-    },
+    }
   },
   data() {
     return {
@@ -114,8 +118,9 @@ export default {
         count: 0,
         min: '',
         max: ''
-      },
-      this.data = [],
+      }
+
+      this.data = []
       this.total = 0
     },
     getColor(index) {

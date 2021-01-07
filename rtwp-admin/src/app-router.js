@@ -5,6 +5,7 @@ import AppVisitors from './components/Visitors.vue'
 import AppHana from './components/Map.vue'
 import AppAbout from './components/About.vue'
 import AppDetail from './components/Detail.vue'
+import AppStats from './components/Stats.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,10 @@ const routes = [{
     path: '/home/map',
     component: AppHana,
     name: 'map'
+}, {
+    path: '/home/stats',
+    component: AppStats,
+    name: 'statistics'
 }, {
     path: '/home/about',
     component: AppAbout,

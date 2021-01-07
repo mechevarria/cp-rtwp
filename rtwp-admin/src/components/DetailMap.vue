@@ -5,12 +5,14 @@
       Visitor Map <i class="float-right cil-map"></i>
     </div>
     <div class="card-body">
-      <button class="btn btn-primary mb-3 mr-2" :disabled="isBusy" @click="getMapData">
-        Replay
-      </button>
-      <button class="btn btn-secondary mb-3 mr-2" :disabled="isBusy" @click="clear">
-        Clear
-      </button>
+      <div class="float-right">
+        <button class="btn btn-primary mb-3 mr-2" :disabled="isBusy" @click="getMapData">
+          Replay
+        </button>
+        <button class="btn btn-secondary mb-3 mr-2" :disabled="isBusy" @click="clear">
+          Clear
+        </button>
+      </div>
       <span class="text-muted float-right">{{ currentTime }}</span>
       <l-map class="app-map" :zoom="zoom" :center="center" :options="mapOptions">
         <l-tile-layer :url="url" :attribution="attribution" :options="tileOptions" />

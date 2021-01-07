@@ -111,7 +111,7 @@
           Visitor Picture <i class="float-right cil-camera"></i>
         </div>
         <div class="card-body text-center">
-          <img :src="data.imageUrl" alt="Visitor Picture" class="img-fluid" />
+          <b-img-lazy :src="data.imageUrl" fluid-grow alt="Visitor Picture"></b-img-lazy>
         </div>
       </div>
     </div>

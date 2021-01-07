@@ -32,6 +32,11 @@
         </router-link>
       </li>
       <li class="c-sidebar-nav-item">
+        <router-link class="c-sidebar-nav-link" to="/home/stats" @click.native="closeOnMobile">
+          <i class="c-sidebar-nav-icon cil-chart-line"></i> Statistics
+        </router-link>
+      </li>
+      <li class="c-sidebar-nav-item">
         <router-link class="c-sidebar-nav-link" to="/home/about" @click.native="closeOnMobile">
           <i class="c-sidebar-nav-icon cil-code"></i> About
         </router-link>
