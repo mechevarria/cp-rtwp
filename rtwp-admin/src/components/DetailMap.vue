@@ -13,7 +13,7 @@
           Clear
         </button>
       </div>
-      <span class="text-muted float-right">{{ currentTime }}</span>
+      <span class="text-muted">{{ currentTime }}</span>
       <l-map class="app-map" :zoom="zoom" :center="center" :options="mapOptions">
         <l-tile-layer :url="url" :attribution="attribution" :options="tileOptions" />
         <l-image-overlay :url="floorMapUrl" :bounds="bounds"></l-image-overlay>
