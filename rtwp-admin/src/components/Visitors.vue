@@ -77,7 +77,7 @@ export default {
         params: {
           order: ctx.sortBy,
           limit: ctx.perPage,
-          offset: ctx.currentPage - 1,
+          offset: (ctx.currentPage - 1) * ctx.perPage,
           direction
         }
       }
