@@ -119,7 +119,7 @@ npm install
 
 ### Development server with hotswap
 ```bash
-cd rtwp-vue
+cd rtwp-admin
 npm install
 
 ./local-setup.sh
@@ -150,7 +150,7 @@ npm run build
 
 
 ```bash
-./cf-rtwp-vue.sh
+./cf-rtwp-admin.sh
 ```
 
 * You will find a url to your deployed application in the SAP Cloud Foundry Cockpit.
