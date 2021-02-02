@@ -41,7 +41,7 @@ export PG_ADDR=cp-rtwp.random-string-text.us-east-1.rds.amazonaws.com
 export PG_PASSWORD=WholeBunchOfCharacters
 ```
 
-![architecture](screenshots/architecture.png)
+![architecture](screenshots/architecture-cp.png)
 
 ## Keycloak container
 
