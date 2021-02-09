@@ -1,0 +1,443 @@
+{
+	"info": {
+		"_postman_id": "666e99cc-ad68-4378-8449-80062c07e189",
+		"name": "RTWP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"access token\"] = jsonData.access_token.length > 0;",
+							"tests[\"refresh token\"] = jsonData.refresh_token.length > 0;",
+							"postman.setEnvironmentVariable(\"token\", jsonData.access_token);",
+							"postman.setEnvironmentVariable(\"refresh\", jsonData.refresh_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "vue",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{keycloak-url}}/auth/realms/{{realm}}/protocol/openid-connect/token",
+					"host": [
+						"{{keycloak-url}}"
+					],
+					"path": [
+						"auth",
+						"realms",
+						"{{realm}}",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "map",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test(\"check map results\", () => {",
+							"  pm.expect(responseJson.results.length).to.be.above(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{express}}/map?start=2020-08-01&end=2020-08-30",
+					"host": [
+						"{{express}}"
+					],
+					"path": [
+						"map"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "2020-08-01"
+						},
+						{
+							"key": "end",
+							"value": "2020-08-30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "map count",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test(\"check map count\", () => {",
+							"  pm.expect(responseJson.result.count).to.be.above(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{express}}/map/count?start=2020-08-01&end=2020-08-30",
+					"host": [
+						"{{express}}"
+					],
+					"path": [
+						"map",
+						"count"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "2020-08-01"
+						},
+						{
+							"key": "end",
+							"value": "2020-08-30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test(\"check stats count\", () => {",
+							"  pm.expect(responseJson.results.length).to.be.above(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{express}}/stats",
+					"host": [
+						"{{express}}"
+					],
+					"path": [
+						"stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "visitors",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test(\"check visitor count\", () => {",
+							"  pm.expect(responseJson.count).to.be.above(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{express}}/visitors?order=last&limit=10&offset=0&direction=DESC",
+					"host": [
+						"{{express}}"
+					],
+					"path": [
+						"visitors"
+					],
+					"query": [
+						{
+							"key": "order",
+							"value": "last"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "direction",
+							"value": "DESC"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "visitor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test(\"check visitor id\", () => {",
+							"  pm.expect(responseJson.result.id).to.eql(296);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{express}}/visitor?id=296",
+					"host": [
+						"{{express}}"
+					],
+					"path": [
+						"visitor"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "296"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "visitor map",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();",
+							"",
+							"pm.test(\"check visitor locations\", () => {",
+							"  pm.expect(responseJson.results.length).to.be.above(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{express}}/visitor/map?device=00:25:ca:2c:64:69&start=2020-12-04 13:25:14&end=2020-12-04 14:31:15",
+					"host": [
+						"{{express}}"
+					],
+					"path": [
+						"visitor",
+						"map"
+					],
+					"query": [
+						{
+							"key": "device",
+							"value": "00:25:ca:2c:64:69"
+						},
+						{
+							"key": "start",
+							"value": "2020-12-04 13:25:14"
+						},
+						{
+							"key": "end",
+							"value": "2020-12-04 14:31:15"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"postman.setEnvironmentVariable(\"token\", \"\");",
+							"postman.setEnvironmentVariable(\"refresh\", \"\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "vue",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "{{refresh}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{keycloak-url}}/auth/realms/{{realm}}/protocol/openid-connect/logout",
+					"host": [
+						"{{keycloak-url}}"
+					],
+					"path": [
+						"auth",
+						"realms",
+						"{{realm}}",
+						"protocol",
+						"openid-connect",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
