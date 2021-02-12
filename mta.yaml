@@ -3,7 +3,7 @@ ID: cp-rtwp
 version: 0.0.1
 modules:
 - name: mcoleman-hdi-hana-deployer
-  type: com.sap.xs.hdi
+  type: hdb
   path: db
   properties:
     OPTIMIZE_MEMORY: true
