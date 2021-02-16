@@ -6,7 +6,7 @@
   "repository": "https://github.com/openNS2/cp-rtwp.git",
   "license": "MIT",
   "scripts": {
-    "postinstall": "npm run lint",
+    "postinstall": "",
     "start": "node server.js",
     "dev": "npm run lint && nodemon --inspect server.js",
     "lint": "npx eslint ."

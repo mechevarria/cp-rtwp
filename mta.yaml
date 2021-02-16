@@ -8,16 +8,16 @@ modules:
   properties:
     OPTIMIZE_MEMORY: true
   requires:
-  - name: rtwp-hdi-hana
+  - name: mechevarria-rtwp-hdi-hana
   parameters:
     disk-quota: 1024M
     memory: 128M
 resources:
-- name: rtwp-hdi-hana
+- name: mechevarria-rtwp-hdi-hana
   type: com.sap.xs.hdi-container
   parameters:
     config:
-      schema: hana
+      schema: mechevarria
     service: hana
   properties:
     hdi-container-name: ${service-name}
