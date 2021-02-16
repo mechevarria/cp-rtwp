@@ -1,4 +1,6 @@
 *.mtar
+*.csv
+*.env
 dist
 node_modules
 mtad.yaml

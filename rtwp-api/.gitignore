@@ -1,3 +1,5 @@
 /node_modules/
 /reports/
 default-services.json
+# auto generated wildcard
+cp-rtwp/db/.env

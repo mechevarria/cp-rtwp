@@ -4,8 +4,8 @@ status=$(cf app rtwp-keycloak | sed -n 3p)
 if [[ $status = "FAILED" ]]; then
   exit 1
 else
-  keycloak_url=https://$(cf app rtwp-keycloak | awk '{print $2}' | sed -n 5p)/auth
-  echo keycloak_url=$keycloak_url
+   keycloak_url=https://$(cf app rtwp-keycloak | awk '{print $2}' | sed -n 5p)/auth
+   echo keycloak_url=$keycloak_url
 fi
 
 status=$(cf app rtwp-api | sed -n 3p)
@@ -18,7 +18,7 @@ fi
 
 app=rtwp-admin
 
-cd $app
+cd rtwp-admin
 
 npm run build
 

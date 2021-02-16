@@ -2,7 +2,7 @@ _schema-version: "3.3"
 ID: cp-rtwp
 version: 0.0.1
 modules:
-- name: mechevarria-hdi-hana-deployer
+- name: hdi-hana-deployer
   type: hdb
   path: db
   properties:

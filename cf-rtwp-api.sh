@@ -16,7 +16,7 @@ fi
 
 app=rtwp-api
 
-cd $app
+cd rtwp-api
 
 cf push $app \
     -b nodejs_buildpack \
