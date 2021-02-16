@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# status=$(cf app rtwp-keycloak | sed -n 3p)
+status=$(cf app rtwp-keycloak | sed -n 3p)
 if [[ $status = "FAILED" ]]; then
   exit 1
 else
