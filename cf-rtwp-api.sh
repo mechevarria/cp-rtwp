@@ -1,22 +1,20 @@
 #!/usr/bin/env bash
 
-# status=$(cf app rtwp-keycloak | sed -n 3p)
-# if [[ $status = "FAILED" ]]; then
-#   exit 1
-# else
-#   keycloak_url=https://$(cf app rtwp-keycloak | awk '{print $2}' | sed -n 5p)/auth
-#   echo keycloak_url=$keycloak_url
-# fi
+status=$(cf app rtwp-keycloak | sed -n 3p)
+if [[ $status = "FAILED" ]]; then
+  exit 1
+else
+  keycloak_url=https://$(cf app rtwp-keycloak | awk '{print $2}' | sed -n 5p)/auth
+  echo keycloak_url=$keycloak_url
+fi
 
-keycloak_url='https://rtwp-keycloak.cfapps.us10.hana.ondemand.com/auth'
-
-service=mcoleman-rtwp-hdi-hana
+service=rtwp-hdi-hana
 status=$(cf service $service | sed -n 3p)
 if [[ $status = "FAILED" ]]; then
   exit 1
 fi
 
-app=mcoleman-rtwp-api
+app=rtwp-api
 
 cd rtwp-api
 
