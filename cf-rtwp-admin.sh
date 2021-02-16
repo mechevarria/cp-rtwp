@@ -8,8 +8,6 @@ else
    echo keycloak_url=$keycloak_url
 fi
 
-keycloak_url='https://rtwp-keycloak.cfapps.us10.hana.ondemand.com/auth'
-
 status=$(cf app rtwp-api | sed -n 3p)
 if [[ $status = "FAILED" ]]; then
   exit 1
