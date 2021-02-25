@@ -61,7 +61,7 @@
       <!-- User Menu -->
       <b-nav-item-dropdown
         toggle-class="c-header-nav-link"
-        class="c-header-nav-item d-md-down-none mx-2 dropdown app-dropdown"
+        class="c-header-nav-item mx-2 dropdown app-dropdown"
         size="lg"
         right
         no-caret
