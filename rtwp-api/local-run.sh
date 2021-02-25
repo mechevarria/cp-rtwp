@@ -8,12 +8,9 @@ fi
 
 echo "{\"hana\": $credentials }" >/tmp/default-services.json
 
-status=$(cf app rtwp-keycloak | sed -n 3p)
-if [[ $status = "FAILED" ]] && [[ $KEYCLOAK = "true" ]]; then
+if [[ -z "${KEYCLOAK_URL}" ]]; then
+  echo "KEYCLOAK_URL environment variable is not set'"
   exit 1
-else
-  export KEYCLOAK_URL=https://$(cf app rtwp-keycloak | awk '{print $2}' | sed -n 5p)/auth
-  echo $KEYCLOAK_URL
 fi
 
 npm run dev
