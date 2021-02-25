@@ -39,6 +39,7 @@ export CP_USER=i999111
 export CP_PASSWORD=MyAccountPassword55
 export PG_ADDR=cp-rtwp.random-string-text.us-east-1.rds.amazonaws.com
 export PG_PASSWORD=WholeBunchOfCharacters
+export KEYCLOAK_URL=https://keycloak-server.com/auth
 ```
 
 ![architecture](screenshots/architecture-cp.png)
@@ -110,19 +111,24 @@ cd rtw-api
 npm install
 ./local-run.sh
 ```
+The one parameter to the deployment script is the prefix. Example: `prod` or `mechevarria`
 
-* Deployed with `cf-express-api.sh`
+* Deployed with 
+```bash
+./cf-express-api.sh mechevarria
+```
 * Change the `KEYCLOAK` environment variable to **true** to enable sso integration
 
 ## Vue.js Container
 > Requires the Express container to be deployed
 
 ### Development server with hotswap
+
 ```bash
 cd rtwp-admin
 npm install
 
-./local-setup.sh
+./local-setup.sh 
 
 npm run serve
 ```
@@ -140,17 +146,17 @@ npm run build
 
 * Make sure you have the [Cloud Foundry Command Line Interface (cf CLI)](https://docs.cloudfoundry.org/cf-cli/) installed
 
-* Update the `cf-login.sh` script with the values found in the SAP Cloud Foundry Cockpit. Then run the script to login.
+* Update the `cf-login.sh` script with the values found in the SAP Cloud Foundry Cockpit. Then run the script to login. The one parameter to the script is the space your want to login to. Example `rtwp-dev`
 
 ```bash
-./cf-login.sh
+./cf-login.sh rtwp-dev
 ```
 
-* Push your code directly without the need of a container registry with the following commands (make sure you have done a build ahead of time)
+* Push your code directly without the need of a container registry with the following commands (make sure you have done a build ahead of time). The one parameter to the script is a prefix for the app name. Example `prod` or `mechevarria` for development
 
 
 ```bash
-./cf-rtwp-admin.sh
+./cf-rtwp-admin.sh mechevarria
 ```
 
 * You will find a url to your deployed application in the SAP Cloud Foundry Cockpit.
