@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+space=$(cf target | awk '{print $2}' | sed -n 5p)
+
+if [[ $space = "rtwp" ]]; then
+  echo "Deploying to the ${space} space"
+else
+  echo "Login to the 'rtwp' space before deploying keycloak './cf-login.sh rtwp'"
+  exit 1
+fi  
+
 app=rtwp-keycloak
 
 cf push $app \

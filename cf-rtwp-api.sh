@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
-status=$(cf app rtwp-keycloak | sed -n 3p)
-if [[ $status = "FAILED" ]]; then
+prefix=$1-
+
+if [[ -z "${KEYCLOAK_URL}" ]]; then
+  echo "KEYCLOAK_URL environment variable is not set'"
   exit 1
-else
-  keycloak_url=https://$(cf app rtwp-keycloak | awk '{print $2}' | sed -n 5p)/auth
-  echo keycloak_url=$keycloak_url
 fi
 
 service=rtwp-hdi-hana
@@ -14,7 +13,7 @@ if [[ $status = "FAILED" ]]; then
   exit 1
 fi
 
-app=rtwp-api
+app=${prefix}rtwp-api
 
 cd rtwp-api
 
