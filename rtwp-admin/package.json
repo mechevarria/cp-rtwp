@@ -1,6 +1,6 @@
 {
   "name": "rtwp-admin",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "author": "Mike Echevarria <mike.echevarria@gmail.com>",
   "license": "MIT",
   "repository": {
@@ -13,7 +13,7 @@
     "lint": "vue-cli-service lint"
   },
   "engines": {
-    "node": "~12.19.1",
+    "node": "~12.20.1",
     "npm": "~6.14.0"
   },
   "dependencies": {
