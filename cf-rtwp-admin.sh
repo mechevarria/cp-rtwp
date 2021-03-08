@@ -28,7 +28,7 @@ cf push $app \
     -c '$HOME/cf-custom-command.sh' \
     --no-start
 
-cf se $app KEYCLOAK_URL $keycloak_url
+cf se $app KEYCLOAK_URL $KEYCLOAK_URL
 cf se $app KEYCLOAK true
 cf se $app EXPRESS_URL $express_url
 

@@ -24,7 +24,7 @@ cf push $app \
     -k 2048M
 
 cf se $app NPM_CONFIG_PRODUCTION false
-cf se $app KEYCLOAK_URL $keycloak_url
+cf se $app KEYCLOAK_URL $KEYCLOAK_URL
 cf se $app KEYCLOAK true
 
 # bind hana service
