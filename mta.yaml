@@ -2,22 +2,24 @@ _schema-version: "3.3"
 ID: cp-rtwp
 version: 0.0.1
 modules:
-- name: mcoleman-hdi-hana-deployer
+- name: hdi-hana-deployer
   type: hdb
   path: db
   properties:
     OPTIMIZE_MEMORY: true
   requires:
-  - name: mcoleman-rtwp-hdi-hana
+  - name: rtwp-hdi-hana
   parameters:
     disk-quota: 1024M
     memory: 128M
 resources:
-- name: mcoleman-rtwp-hdi-hana
+- name: rtwp-hdi-hana
   type: com.sap.xs.hdi-container
   parameters:
+    service-name: rtwp-hdi-hana
     config:
-      schema: mcoleman
+      schema: RTWP_SCHEMA
+      makeUniqueName: false
     service: hana
   properties:
     hdi-container-name: ${service-name}

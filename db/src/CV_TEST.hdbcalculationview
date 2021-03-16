@@ -39,12 +39,7 @@
     <attribute id="GEO_LOC" order="7" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="GEO_LOC"/>
       <keyMapping columnObjectName="BADGE_LOCATION" columnName="GEO_LOC"/>
-    </attribute>
-    <attribute id="SEEN_TS" order="8" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SEEN_TS"/>
-      <keyMapping columnObjectName="BADGE_LOCATION" columnName="SEEN_TS"/>
-    </attribute>
-  </attributes>
+    </attribute></attributes>
   <calculatedAttributes/>
   <baseMeasures/>
   <calculatedMeasures/>

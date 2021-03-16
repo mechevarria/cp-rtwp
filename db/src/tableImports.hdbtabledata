@@ -9,8 +9,8 @@
 			"dialect": "HANA",
 			"type_config": {
 				"delimiter": ","
-			}
-        },
+			} 
+        }, 
         "import_settings": {
         "include_filter" : [ ],
         "import_columns": ["ID",
