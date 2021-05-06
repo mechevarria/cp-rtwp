@@ -28,7 +28,7 @@
       <app-card-visitors></app-card-visitors>
     </div>
     <div class="card-deck mt-4">
-      <app-map v-bind:show-form=false></app-map>
+      <app-map v-bind:show-form=false v-bind:class-name="'app-map-sm'"></app-map>
     </div>
     <div class="card-deck mt-4">
       <div class="card">
@@ -38,7 +38,7 @@
             <li>No scheduled fire alarm testing</li>
             <li>Temperature sensor installation was completed this week</li>
             <li>
-              Labs will be closed on 10/02/2020 for
+              Labs will be closed on 05/02/2021 for
               <a href="https://sapns2.com/ns2now/" target="_blank">NS2 Now</a> filming
             </li>
           </ul>

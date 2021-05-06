@@ -32,7 +32,7 @@
           </button>
         </div>
       </div>
-      <l-map class="app-map" v-if="showMap" :zoom="zoom" :center="center" :options="mapOptions">
+      <l-map :class="className" v-if="showMap" :zoom="zoom" :center="center" :options="mapOptions">
         <l-tile-layer :url="url" :attribution="attribution" :options="tileOptions" />
         <l-image-overlay :url="floorMapUrl" :bounds="bounds"></l-image-overlay>
         <l-circle-marker
@@ -78,6 +78,10 @@ export default {
     showForm: {
       type: Boolean,
       default: true
+    },
+    className: {
+      type: String,
+      default: 'app-map-lg'
     }
   },
   data() {
@@ -94,7 +98,7 @@ export default {
       zoom: 20,
       center: latLng(38.880411, -77.461193),
       mapOptions: {
-        zoomControl: false,
+        zoomControl: true,
         scrollWheelZoom: false
       },
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -173,7 +177,10 @@ export default {
 }
 </script>
 <style scoped>
-.app-map {
+.app-map-sm {
   height: 400px;
+}
+.app-map-lg {
+  height: 50em;
 }
 </style>
