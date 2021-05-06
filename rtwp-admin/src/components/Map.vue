@@ -46,6 +46,7 @@
         >
           <l-popup>{{ item.locCount }} reports at this location</l-popup>
         </l-circle-marker>
+        <l-control-zoom position="bottomright"  ></l-control-zoom>
       </l-map>
     </div>
     <div class="card-footer">
@@ -60,7 +61,7 @@
 
 <script>
 import { latLng } from 'leaflet'
-import { LMap, LTileLayer, LCircleMarker, LImageOverlay, LPopup } from 'vue2-leaflet'
+import { LMap, LTileLayer, LCircleMarker, LImageOverlay, LPopup, LControlZoom } from 'vue2-leaflet'
 import axios from 'axios'
 import msgMixin from '../mixins/msg-mixin'
 
@@ -71,7 +72,8 @@ export default {
     LTileLayer,
     LCircleMarker,
     LImageOverlay,
-    LPopup
+    LPopup,
+    LControlZoom
   },
   mixins: [msgMixin],
   props: {
@@ -98,7 +100,7 @@ export default {
       zoom: 20,
       center: latLng(38.880411, -77.461193),
       mapOptions: {
-        zoomControl: true,
+        zoomControl: false,
         scrollWheelZoom: false
       },
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',

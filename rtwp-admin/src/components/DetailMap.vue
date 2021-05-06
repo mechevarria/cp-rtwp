@@ -19,13 +19,14 @@
         <l-image-overlay :url="floorMapUrl" :bounds="bounds"></l-image-overlay>
         <l-polyline :lat-lngs="latLngs" :color="lineColor"></l-polyline>
         <l-marker v-if="currentLoc" :lat-lng="currentLoc" :icon="userIcon"></l-marker>
+        <l-control-zoom position="bottomright"  ></l-control-zoom>
       </l-map>
     </div>
   </div>
 </template>
 <script>
 import { latLng, icon } from 'leaflet'
-import { LMap, LTileLayer, LImageOverlay, LMarker, LPolyline } from 'vue2-leaflet'
+import { LMap, LTileLayer, LImageOverlay, LMarker, LPolyline, LControlZoom } from 'vue2-leaflet'
 import axios from 'axios'
 import msgMixin from '../mixins/msg-mixin'
 import formatMixin from '../mixins/format-mixin'
@@ -38,7 +39,8 @@ export default {
     LTileLayer,
     LImageOverlay,
     LPolyline,
-    LMarker
+    LMarker,
+    LControlZoom
   },
   mixins: [msgMixin, formatMixin],
   data() {
