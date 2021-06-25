@@ -35,10 +35,6 @@
     <attribute id="DEVICE_ID" order="6" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="DEVICE_ID"/>
       <keyMapping columnObjectName="BADGE_LOCATION" columnName="DEVICE_ID"/>
-    </attribute>
-    <attribute id="GEO_LOC" order="7" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="GEO_LOC"/>
-      <keyMapping columnObjectName="BADGE_LOCATION" columnName="GEO_LOC"/>
     </attribute></attributes>
   <calculatedAttributes/>
   <baseMeasures/>

@@ -11,7 +11,7 @@ module.exports = (req, res) => {
         count(*) AS "count",
         MIN(SEEN_TS) AS "min",
         MAX(SEEN_TS) AS "max"
-    FROM badge_location
+    FROM CV_BADGE_LOCATION
     WHERE SEEN_TS >= TO_TIMESTAMP( ?, 'YYYY-MM-DD' ) AND SEEN_TS <= TO_TIMESTAMP( ?, 'YYYY-MM-DD' )`;
 
   try {

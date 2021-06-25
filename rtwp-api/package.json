@@ -6,14 +6,14 @@
   "repository": "https://github.com/openNS2/cp-rtwp.git",
   "license": "MIT",
   "scripts": {
-    "postinstall": "npm run lint",
+    "postinstall": "",
     "start": "node server.js",
     "dev": "npm run lint && nodemon --inspect server.js",
     "lint": "npx eslint ."
   },
   "engines": {
-    "node": "~12.19.1",
-    "npm": "~6.14.0"
+    "node": "^12.19.1",
+    "npm": "^6.14.0"
   },
   "dependencies": {
     "@sap/hdbext": "^6.2.2",
