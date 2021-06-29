@@ -9,6 +9,7 @@ const visitorLength = require('./controllers/visitor-length');
 const dateDiff = require('./controllers/date-diff');
 const dateLast = require('./controllers/date-last');
 const dateStart = require('./controllers/date-start');
+const status = require('./controllers/status');
 
 const router = express.Router();
 
@@ -22,5 +23,6 @@ router.route('/visitor/length').get(visitorLength);
 router.route('/date/diff').get(dateDiff);
 router.route('/date/last').get(dateLast);
 router.route('/date/start').get(dateStart);
+router.route('/status').get(status);
 
 module.exports = router;

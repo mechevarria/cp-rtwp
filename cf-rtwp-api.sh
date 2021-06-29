@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
-# status=$(cf app rtwp-keycloak | sed -n 3p)
-# if [[ $status = "FAILED" ]]; then
-#   exit 1
-# else
-#   keycloak_url=https://$(cf app rtwp-keycloak | awk '{print $2}' | sed -n 5p)/auth
-#   echo keycloak_url=$keycloak_url
-# fi
- 
-keycloak_url='https://rtwp-keycloak.cfapps.us10.hana.ondemand.com/auth'
+
+prefix=$1-
+
+if [[ -z "${KEYCLOAK_URL}" ]]; then
+  echo "KEYCLOAK_URL environment variable is not set'"
+  exit 1
+fi
 
 service=rtwp-hdi-hana
 status=$(cf service $service | sed -n 3p)
@@ -16,7 +14,8 @@ if [[ $status = "FAILED" ]]; then
   exit 1
 fi
 
-app=mcoleman-rtwp-api
+
+app=${prefix}rtwp-api
 
 cd rtwp-api
 
@@ -27,7 +26,7 @@ cf push $app \
     -k 2048M
 
 cf se $app NPM_CONFIG_PRODUCTION false
-cf se $app KEYCLOAK_URL $keycloak_url
+cf se $app KEYCLOAK_URL $KEYCLOAK_URL
 cf se $app KEYCLOAK true
 
 # bind hana service
