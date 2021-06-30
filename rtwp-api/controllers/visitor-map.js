@@ -8,7 +8,7 @@ module.exports = (req, res) => {
         DISTINCT LOC as "location",
         SEEN_TS AS "seen"
     FROM
-        BADGE_LOCATION
+        CV_BADGE_LOCATION
     WHERE
         DEVICE_ID=? AND
         SEEN_TS >= TO_TIMESTAMP( ?, 'YYYY-MM-DD HH24:MI:SS' ) AND 

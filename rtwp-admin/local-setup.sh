@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 prefix=$1-
 
 if [[ -z "${KEYCLOAK_URL}" ]]; then
@@ -14,6 +15,7 @@ if [[ $status = "FAILED" ]]; then
   exit 1
 else
   export EXPRESS_URL=https://$(cf app ${prefix}rtwp-api | awk '{print $2}' | sed -n 5p)/
+
   echo EXPRESS_URL=$EXPRESS_URL
 fi
 

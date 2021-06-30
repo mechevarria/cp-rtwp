@@ -1,0 +1,37 @@
+FUNCTION "generateTimestamps" () 
+RETURNS TABLE (START_TIME TIMESTAMP) 
+LANGUAGE SQLSCRIPT 
+AS 
+BEGIN 
+--   RETURN SELECT A, :VAL * B AS B FROM MYTABLE; 
+-- RETURN SELECT
+--     GENERATED_PERIOD_START AS "START_TIME"
+-- FROM 
+--     SERIES_GENERATE_TIMESTAMP ('INTERVAL 1 HOUR'              -- step length
+--                         , :MIN_TIME   -- lower end
+--                         , current_date)                   -- upper END
+-- ORDER BY 
+--     "START_TIME" ASC;
+-- DECLARE MIN_TIME TIMESTAMP;
+-- SELECT MIN(START_TS) INTO MIN_TIME FROM "VISIT";
+
+-- RETURN SELECT
+--     GENERATED_PERIOD_START AS "START_TIME"
+-- FROM 
+--     SERIES_GENERATE_TIMESTAMP ('INTERVAL 1 HOUR'              -- step length
+--                         ,  ADD_SECONDS(:MIN_TIME, - MINUTE(:MIN_TIME) * 60 - SECOND(:MIN_TIME))   -- lower end
+--                         ,  ADD_SECONDS(current_date, - MINUTE(current_date) * 60 - SECOND(current_date)))                   -- upper END
+-- ORDER BY 
+--     "START_TIME" ASC;
+DECLARE MIN_TIME TIMESTAMP;
+SELECT MIN(START_TS) INTO MIN_TIME FROM "VISIT";
+
+RETURN SELECT
+    GENERATED_PERIOD_START AS "START_TIME"
+FROM 
+    SERIES_GENERATE_TIMESTAMP ('INTERVAL 1 HOUR'              -- step length
+                        ,  ADD_SECONDS(:MIN_TIME, - MINUTE(:MIN_TIME) * 60 - SECOND(:MIN_TIME))   -- lower end
+                        ,  ADD_SECONDS(ADD_DAYS(current_date,5), - MINUTE(current_date) * 60 - SECOND(current_date)))                   -- upper END
+ORDER BY 
+    "START_TIME" ASC;
+END

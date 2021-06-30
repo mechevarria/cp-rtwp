@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_BADGE_LOCATION_SAC" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_BADGE_LOCATION.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="BADGE_LOCATION">
+    <resourceUri>BADGE_LOCATION</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="LOC"/>
+      <viewAttribute id="PROB"/>
+      <viewAttribute id="SEEN"/>
+      <viewAttribute id="FLOOR"/>
+      <viewAttribute id="DEVICE_ID"/>
+      <viewAttribute id="SEEN_TS"/>
+    
+      <viewAttribute id="LAT"/>
+      <viewAttribute id="LNG"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_1" datatype="INTEGER" expressionLanguage="SQL">
+        <formula>1</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="BADGE_LOCATION"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ID"/>
+    </attribute>
+    <attribute id="LOC" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOC"/>
+      <keyMapping columnObjectName="Projection_1" columnName="LOC"/>
+    </attribute>
+    <attribute id="PROB" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROB"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PROB"/>
+    </attribute>
+    <attribute id="SEEN" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SEEN"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SEEN"/>
+    </attribute>
+    <attribute id="FLOOR" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FLOOR"/>
+      <keyMapping columnObjectName="Projection_1" columnName="FLOOR"/>
+    </attribute>
+    <attribute id="DEVICE_ID" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEVICE_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DEVICE_ID"/>
+    </attribute>
+    <attribute id="SEEN_TS" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SEEN_TS"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SEEN_TS"/>
+    </attribute></attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="CC_1" order="8" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="CC_1"/>
+      <measureMapping columnObjectName="Projection_1" columnName="CC_1"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="105" y="215"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

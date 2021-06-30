@@ -1,0 +1,9 @@
+entity VISITS {
+    key VISIT_ID: Integer;
+    VISITOR_ID: Integer;
+    DEVICE_ID: String(100);
+    CHECKIN_TS: UTCTimestamp;
+    CHECKOUT_TS: UTCTimestamp;
+    UPDATED_AT_TS: UTCTimestamp;
+    IS_COMPLETE: Boolean;
+};

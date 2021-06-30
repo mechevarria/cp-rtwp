@@ -5,6 +5,8 @@ entity BADGE_LOCATION {
     SEEN: String(100);
     FLOOR: Integer;
     DEVICE_ID: String(100);
-    GEO_LOC: hana.ST_POINT;
+    LAT: Double;
+    LNG: Double;
     SEEN_TS: UTCTimestamp;
+    ALTITUDE: Double;
 };

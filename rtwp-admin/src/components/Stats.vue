@@ -68,6 +68,27 @@
         </div>
       </div>
     </div>
+    <div id="editor" ref="editor">SAC HERE</div>
+    <!-- <div 
+      id="iframe-wrapper"
+      :style="iframe.wrapperStyle" 
+    > -->
+    <div 
+      id="iframe-wrapper"
+    >
+        <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/M2kSJbLbIgQ" frameborder="0" allowfullscreen></iframe>  -->
+        <iframe width="560" height="315" src="https://oidsr44e6zfcs2ucrpdelht.us10.sac.ondemand.com/sap/fpa/ui/tenants/71e4c/bo/story/4F6973040B65B9BAD132645019AC1687?mode=embed" frameborder="0" allowfullscreen></iframe> 
+      <!-- <iframe 
+        v-if="loaded"
+        :src="iframe.src"
+        :style="iframe.style"
+        :height="iframe.style.height"
+        :width="iframe.style.width"
+      
+        frameborder="0"
+      ></iframe> -->
+    </div>
+    
   </span>
 </template>
 <script>
@@ -102,7 +123,13 @@ export default {
             data: []
           }
         ]
-      }
+      },
+    //   iframe: {
+    //     //   https://<yourSACtenantURI>/sap/fpa/ui/tenants/<yourTenantID>/bo/story/<yourStoryID>?<Parameters>
+    //     // src: 'https://oidsr44e6zfcs2ucrpdelht.us10.sac.ondemand.com/sap/fpa/ui/tenants/71e4c/bo/story/4F6973040B65B9BAD132645019AC1687?mode=embed'
+    //     src: 'https://www.youtube.com/embed/owsfdh4gxyc'
+    //   }
+
     }
   },
   methods: {
@@ -142,6 +169,22 @@ export default {
   created() {
     this.getData()
   }
+//    mounted() {
+//     let editor = this.$refs.editor;
+//     this.iframe.style = {
+//       position: 'absolute',
+//       width: window.innerWidth,
+//       height: window.innerHeight,
+//       top: -editor.offsetTop + 'px',
+//       left: -editor.offsetLeft + 'px',
+//     }    
+//     this.iframe.wrapperStyle = {
+//       overflow: 'hidden',
+//       height: editor.clientHeight + 'px',
+//       width: editor.clientWidth + 'px',
+//     } 
+//     this.loaded = true;
+//   }
 }
 </script>
 <style scoped>

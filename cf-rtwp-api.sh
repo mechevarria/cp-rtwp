@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 prefix=$1-
 
 if [[ -z "${KEYCLOAK_URL}" ]]; then
@@ -12,6 +13,7 @@ status=$(cf service $service | sed -n 3p)
 if [[ $status = "FAILED" ]]; then
   exit 1
 fi
+
 
 app=${prefix}rtwp-api
 
