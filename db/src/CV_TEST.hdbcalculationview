@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_TEST" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_TEST"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="BADGE_LOCATION">
+    <resourceUri>BADGE_LOCATION</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+
+<logicalModel id="BADGE_LOCATION">
+  <attributes>
+    <attribute id="ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+      <keyMapping columnObjectName="BADGE_LOCATION" columnName="ID"/>
+    </attribute>
+    <attribute id="LOC" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOC"/>
+      <keyMapping columnObjectName="BADGE_LOCATION" columnName="LOC"/>
+    </attribute>
+    <attribute id="PROB" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROB"/>
+      <keyMapping columnObjectName="BADGE_LOCATION" columnName="PROB"/>
+    </attribute>
+    <attribute id="SEEN" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SEEN"/>
+      <keyMapping columnObjectName="BADGE_LOCATION" columnName="SEEN"/>
+    </attribute>
+    <attribute id="FLOOR" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FLOOR"/>
+      <keyMapping columnObjectName="BADGE_LOCATION" columnName="FLOOR"/>
+    </attribute>
+    <attribute id="DEVICE_ID" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEVICE_ID"/>
+      <keyMapping columnObjectName="BADGE_LOCATION" columnName="DEVICE_ID"/>
+    </attribute></attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  </shapes>
+</layout>
+</Calculation:scenario>

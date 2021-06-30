@@ -16,8 +16,10 @@ resources:
 - name: rtwp-hdi-hana
   type: com.sap.xs.hdi-container
   parameters:
+    service-name: rtwp-hdi-hana
     config:
-      schema: hana
+      schema: RTWP_SCHEMA
+      makeUniqueName: false
     service: hana
   properties:
     hdi-container-name: ${service-name}

@@ -1,0 +1,13 @@
+entity VISITOR_DETAILS {
+    key VISITOR_ID : Integer;
+    EMAIL: String(200);
+    MOBILE: String(100);
+    MOBILE_COUNTRY: String(10);
+    FIRST_NAME: String(100);
+    LAST_NAME: String(100);
+    VISITOR_TYPE: Integer;
+    IMAGE_URL: String(1000);
+    COMPANY_NAME: String(200);
+    ADDRESS: String(200);
+    STATUS: String(100);
+};

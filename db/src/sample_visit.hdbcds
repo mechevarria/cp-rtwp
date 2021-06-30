@@ -1,0 +1,4 @@
+entity SAMPLE_VISIT {
+    key ID : Integer generated always as identity (start with 1 increment by 1);
+    START_TS: UTCTimestamp;
+};
