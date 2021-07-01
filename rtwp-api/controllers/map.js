@@ -5,9 +5,7 @@ module.exports = (req, res) => {
 
   const start = req.query.start || defaults.start;
   const end = req.query.end || defaults.end;
-  const clusteringAlg = req.query.clusteringAlg || 'None'
 
-  
   const sql = `
     SELECT 
         loc as "loc",
@@ -21,8 +19,6 @@ module.exports = (req, res) => {
         geo_loc
     ORDER BY count(*) DESC
     LIMIT 50`;
-
-    // if (clusteringAlg === 'None') {
 
   try {
     const results = req.db.exec(sql, [start, end]);
