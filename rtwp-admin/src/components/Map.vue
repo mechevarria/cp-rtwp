@@ -19,14 +19,7 @@
               label-no-date-selected="Select End Date"
               v-model="end"
             ></b-form-datepicker>
-            <b-dropdown id="dropdown-1" text="Clustering Algorithm" v-model="clusteringAlg">
-    <b-dropdown-item>None</b-dropdown-item>
-    <b-dropdown-item>K-Means</b-dropdown-item>
-    <!-- <b-dropdown-item>Third Action</b-dropdown-item> -->
-    <!-- <b-dropdown-divider></b-dropdown-divider> -->
-    <!-- <b-dropdown-item active>Active action</b-dropdown-item> -->
-    <!-- <b-dropdown-item disabled>Disabled action</b-dropdown-item> -->
-  </b-dropdown>
+            
           </form>
         </div>
         <div>
@@ -152,8 +145,7 @@ export default {
       const options = {
         params: {
           start: this.start,
-          end: this.end,
-          clusteringAlg: this.clusteringAlg
+          end: this.end
         }
       }
       axios
